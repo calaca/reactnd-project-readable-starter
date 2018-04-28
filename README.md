@@ -23,9 +23,8 @@ You'll need to install Node and NPM (they come together when you install Node): 
 Open a terminal at the project root:
 1. `cd api-server`
 2. `npm install`
-3. `cd ..`
-4. `cd frontend`
-5. `npm install`
+3. `cd ../frontend`
+4. `npm install`
 
 ### NPM scripts
 
