@@ -1,22 +1,74 @@
-# Readable API Server
+# Readable
 
-This is the starter project for the final assessment project for Udacity's Redux course where you will build a content and comment web app. Users will be able to post content to predefined categories, comment on their posts and other users' posts, and vote on posts and comments. Users will also be able to edit and delete posts and comments.
+[![REACT nanodegree](https://img.shields.io/badge/udacity-REACTND-02b3e4.svg?style=flat)](https://br.udacity.com/course/react-nanodegree--nd019)
 
-This repository includes the code for the backend API Server that you'll use to develop and interact with the front-end portion of the project.
+> Content and comments web app built with React and Redux.
 
-## Start Developing
+## Getting Started
 
-To get started developing right away:
+Clone this repository in your computer:
 
-* Install and start the API server
-    - `cd api-server`
-    - `npm install`
-    - `node server`
-* In another terminal window, use Create React App to scaffold out the front-end
-    - `create-react-app frontend`
-    - `cd frontend`
-    - `npm start`
+```
+$ git clone https://github.com/calaca/reactnd-readable.git
+```
 
-## API Server
+Or [download](https://github.com/calaca/reactnd-readable/archive/master.zip) it as a ZIP file.
 
-Information about the API server and how to use it can be found in its [README file](api-server/README.md).
+### Prerequisites
+
+You'll need to install Node and NPM (they come together when you install Node): [NodeJS - Downloads](https://nodejs.org/en/download/current/)
+
+### Installing
+
+Open a terminal at the project root:
+1. `cd api-server`
+2. `npm install`
+3. `cd ..`
+4. `cd frontend`
+5. `npm install`
+
+### NPM scripts
+
+- `npm run start`: runs the app in development mode
+- `npm run build`: builds the app for production to the `build` folder
+- `npm run test`: runs the test watcher in an interactive mode
+- `npm run eject`: ejects the app so you have full control over configuration files and the transitive dependencies
+
+To run these, make sure you are at the `frontend` folder.
+
+## Running the project
+
+### Development
+
+1. Open a terminal and go to `./api-server`
+2. Run the server with `node server` (keep this terminal open)
+3. Open another terminal and go to the client app source folder `./frontend`
+4. Run the React app with `npm start`
+5. Start coding!
+
+### Production
+
+Click [here](soon) for the live version of this app.
+
+## Running the tests
+
+Explain how to run the automated tests for this system.
+
+## Deployment
+
+Add additional notes about how to deploy this on a live system.
+
+## Built With
+
+* [React](https://reactjs.org/) - A JavaScript library for building user interfaces
+* [React Router](https://github.com/ReactTraining/react-router) - Declarative routing for React
+* [Redux](https://redux.js.org/) - Redux is a predictable state container for JavaScript apps
+* [react-redux](https://github.com/reactjs/react-redux) - Official React bindings for Redux
+
+## Contributing
+
+Please read [CONTRIBUTING](https://github.com/calaca/reactnd-readable/blob/master/CONTRIBUTING.md) for details on the process for submitting pull requests.
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](https://github.com/calaca/reactnd-readable/blob/master/LICENSE) file for details
