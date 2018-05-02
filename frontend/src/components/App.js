@@ -4,6 +4,8 @@ import Home from './Home';
 import Footer from './Footer';
 import Top from './Top';
 import NotFound from './NotFound';
+import Category from './Category';
+import Post from './Post';
 import './App.css';
 
 class App extends Component {
@@ -13,8 +15,8 @@ class App extends Component {
         <Top />
           <Switch>
             <Route exact path="/" render={() => (<Home />)}/>
-            <Route path="/category" />
-            <Route path="/category/post" />
+            <Route exact path="/:category" render={(props) => (<Category {...props} />)} />
+            <Route exact path="/:category/:post" render={(props) => (<Post {...props} />)} />
             <Route component={NotFound} />
           </Switch>
         <Footer />
