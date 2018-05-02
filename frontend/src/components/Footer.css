@@ -1,0 +1,41 @@
+footer {
+  font-size: 14px;
+  background-color: #14001d;
+  width: 100%;
+  height: 50px;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+}
+
+footer p {
+  margin: 0;
+  color: #CC9BE1;
+  align-self: center;
+}
+
+footer p a {
+  color: #fff;
+  text-decoration: none;
+  padding: 5px;
+  transition: all 0.4s ease-in-out;
+}
+
+footer p a:hover {
+  background-color: #310346;
+}
+
+.react-logo {
+  animation: spin infinite 20s linear;
+  height: 20px;
+  margin-bottom: -5px;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}

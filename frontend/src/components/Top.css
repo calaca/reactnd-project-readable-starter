@@ -1,0 +1,17 @@
+.top {
+  font-size: 36px;
+  background-color: #14001d;
+  color: #fff;
+  width: 100%;
+  height: 70px;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+}
+
+.top h1 {
+  margin: 0;
+  align-self: center;
+  font-weight: 200;
+  text-transform: uppercase;
+}
