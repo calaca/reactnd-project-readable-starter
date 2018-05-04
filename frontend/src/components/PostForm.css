@@ -1,0 +1,16 @@
+.new-edit-post .form-wrapper {
+  width: 80%;
+  margin: 0 auto;
+  min-height: 480px;
+}
+
+.new-edit-post .form-wrapper form {
+  margin-top: 1em;
+}
+
+@media (max-width: 769px) {
+  .new-edit-post .form-wrapper {
+    width: 100%;
+    padding: 1em;
+  }
+}

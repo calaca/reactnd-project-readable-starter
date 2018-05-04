@@ -1,27 +1,25 @@
 import React, { Component } from 'react';
-import './Post.css';
+import './Comment.css';
 
-class Post extends Component {
+class Comment extends Component {
 
   render() {
     return (
-      <article className="post">
+      <article className="comment">
         <div className="vote">
           <span className="up"></span>
           <span className="count">5</span>
           <span className="down"></span>
         </div>
-        <div className="thumbnail"></div>
         <div className="content">
-          <h3 className="title"><a href="">This is the post title</a></h3>
-          <p className="details">submitted by <span>person</span></p>
-          <div className="comments">
-            <p>
-              <span className="count">3</span> comments
-            </p>
+          <div className="author-details">
+            <h3 className="author-name">Person</h3>
+            <span className="date">20/02/18 13:06</span>
           </div>
+          <p className="body">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit.
+          </p>
           <div className="info-actions">
-            <span className="category">category</span>
             <button className="edit">edit</button>
             <button className="delete">delete</button>
           </div>
@@ -31,4 +29,4 @@ class Post extends Component {
   }
 }
 
-export default Post;
+export default Comment;

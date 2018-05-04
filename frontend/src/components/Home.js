@@ -1,48 +1,37 @@
-import React, { Component } from 'react';
-import { getPosts, getCategories } from '../util/PostsAPI';
-import { Link } from 'react-router-dom';
-import sortBy from 'sort-by';
+import React, { Component, Fragment } from 'react';
+import Post from './Post';
+import CategoryList from './CategoryList';
+import './Home.css';
 
 class Home extends Component {
-  state = {
-    posts: [],
-    categories: []
-  }
-
-  componentDidMount() {
-    getPosts()
-      .then(posts => {
-        posts.sort(sortBy('title'));
-        this.setState({ posts });
-      }
-    )
-
-    getCategories()
-      .then(categories => {
-        categories.sort(sortBy('name'));
-        this.setState({ categories });
-      })
-  }
 
   render() {
     return (
-      <section className="home">
-        Home
-        <ul className="posts">
-          {
-            this.state.posts.map(post =>
-              <Link key={post.id} to={`/${post.category}/${post.id}`}>{post.title}</Link>
-            )
-          }
-        </ul>
-        <ul className="category">
-          {
-            this.state.categories.map(category => 
-              <Link key={category.name} to={`/${category.path}`}>{category.name}</Link>
-            )
-          }
-        </ul>
-      </section>
+      <Fragment>
+        <main className="home">
+          <section className="posts">
+            <h2 className="section-title">Posts</h2>
+            <div className="actions">
+              <div className="order-by">
+                <span>Order by</span>
+                <select>
+                  <option value="1">votes</option>
+                  <option value="2">date</option>
+                </select>
+              </div>
+              <button className="btn-primary green">New Post</button>
+            </div>
+            <div className="posts-wrapper">
+              <Post />
+              <Post />
+              <Post />
+              <Post />
+              <Post />
+            </div>
+          </section>
+        </main>
+        <CategoryList />
+      </Fragment>
     )
   }
 }

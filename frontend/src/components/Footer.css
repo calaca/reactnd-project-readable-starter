@@ -6,6 +6,7 @@ footer {
   display: flex;
   flex-flow: row wrap;
   justify-content: center;
+  order: 3;
 }
 
 footer p {
@@ -26,7 +27,7 @@ footer p a:hover {
 }
 
 .react-logo {
-  animation: spin infinite 20s linear;
+  animation: spin infinite 10s linear;
   height: 20px;
   margin-bottom: -5px;
 }

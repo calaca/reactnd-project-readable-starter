@@ -1,0 +1,66 @@
+.post-details {
+  width: 80%;
+  padding: 2em 0;
+  margin: 0 auto;
+}
+
+.post-details .posts-wrapper,
+.post-details .comments-wrapper form {
+  padding-bottom: 30px;
+  margin-bottom: 30px;
+  border-bottom: 1px solid #e1e1e1;
+}
+
+.post-details .posts-wrapper .post {
+  display: flex;
+  flex-flow: row wrap;
+}
+
+.post-details .posts-wrapper .post .vote {
+  align-self: flex-start;
+}
+
+.post-details .posts-wrapper .post .content {
+  margin: 0 0 30px 10px;
+  width: calc(100% - 45px);
+}
+
+.post-details .posts-wrapper .post .body p {
+  margin: 0;
+  line-height: 18px;
+  font-size: 16px;
+  color: #270137;
+  font-weight: 200;
+}
+
+.post-details .comments-wrapper form input,
+.post-details .comments-wrapper form textarea {
+  display: block;
+  font-family: 'Roboto', Arial, Helvetica, sans-serif;
+  margin-bottom: 20px;
+  padding: 10px;
+  font-size: 14px;
+}
+
+.post-details .comments-wrapper form input {
+  width: 560px;
+}
+
+.post-details .comments-wrapper form .btn-primary {
+  margin-top: 10px;
+  width: auto;
+}
+
+.post-details .comments-wrapper form textarea {
+  width: 560px;
+  max-width: 100%;
+  height: 100px;
+  resize: none;
+}
+
+@media (max-width: 769px) {
+  .post-details {
+    width: 100%;
+    padding: 1em;
+  }
+}

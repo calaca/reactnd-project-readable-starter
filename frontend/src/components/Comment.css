@@ -1,0 +1,119 @@
+.comments-list .comment {
+  background-color: #e1e1e1;
+  border-bottom: 1px solid #c7c6c6;
+  display: flex;
+  flex-flow: row wrap;
+  width: 100%;
+}
+
+.comments-list .comment:last-child {
+  border-bottom: 0;
+}
+
+.comments-list .comment .vote {
+  width: 30px;
+  margin: 5px 0 5px 5px;
+  align-self: center;
+  text-align: center;
+}
+
+.comments-list .comment .vote .up,
+.comments-list .comment .vote .down,
+.comments-list .comment .vote .count {
+  display: block;
+  margin: 0 auto;
+}
+
+.comments-list .comment .vote .up,
+.comments-list .comment .vote .down {
+  width: 20px;
+  height: 20px;
+  background-image: url('../assets/arrow.svg');
+  background-size: 90%;
+  background-repeat: no-repeat;
+  background-position: center center;
+  cursor: pointer;
+  background-color: #e1e1e1;
+  transition: all 0.4s ease-in-out;
+}
+
+.comments-list .comment .vote .up:hover,
+.comments-list .comment .vote .down:hover {
+  background-color: #fff;
+}
+
+.comments-list .comment .vote .up {
+  transform: rotate(-90deg);
+}
+
+.comments-list .comment .vote .down {
+  transform: rotate(90deg);
+}
+
+.comments-list .comment .vote .count {
+  color: #270137;
+  font-size: 14px;
+  margin: 5px 0;
+}
+
+.comments-list .comment .content {
+  padding: 10px;
+  width: calc(100% - 35px);
+}
+
+.comments-list .comment .content p {
+  margin: 0;
+}
+
+.comments-list .comment .content .details {
+  padding-right: 0.5em;
+  margin-right: 0.5em;
+  border-right: 1px solid #666;
+}
+
+.comments-list .comment .content .author-details .author-name,
+.comments-list .comment .content .author-details .date {
+  display: inline-block;
+  font-size: 14px;
+}
+
+.comments-list .comment .content .author-details .author-name {
+  color: #270137;
+  padding-right: 5px;
+  border-right: 1px solid #666;
+  text-transform: lowercase;
+  font-weight: 400;
+  margin: 0 5px 5px 0;
+}
+
+.comments-list .comment .content .author-details .date {
+  font-weight: 200;
+  color: #666;
+}
+
+.comments-list .comment .content .body {
+  font-size: 16px;
+  font-weight: 200;
+}
+
+.comments-list .comment .content .info-actions {
+  margin-top: 5px;
+}
+
+.comments-list .comment .content .info-actions button {
+  padding: 0;
+  margin-right: 10px;
+  background: none;
+  border: 0;
+  color: #666;
+  cursor: pointer;
+  transition: all 0.4s ease-in-out;
+}
+
+.comments-list .comment .content .info-actions button.edit:hover {
+  color: #3498db;
+}
+
+.comments-list .comment .content .info-actions button.delete:hover {
+  color: #e74c3c;
+}
