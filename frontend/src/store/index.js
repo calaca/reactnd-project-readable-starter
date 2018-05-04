@@ -1,7 +1,20 @@
-import { createStore, combineReducers } from 'redux';
-import { testReducer } from '../reducers';
+import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
+import logger from 'redux-logger';
+import thunk from 'redux-thunk';
+import { initReducer } from '../reducers';
 
-const reducers = combineReducers({ testReducer });
-const store = createStore(reducers, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
+const reducers = combineReducers({ initReducer });
 
-export default store;
+const middlewares = process.env.NODE_ENV === 'development' ?
+  applyMiddleware(logger, thunk) :
+  applyMiddleware(thunk);
+
+const Store = createStore(
+  reducers,
+  compose(
+    middlewares,
+    window.devToolsExtension ? window.devToolsExtension() : f => f
+  )
+);
+
+export default Store;
