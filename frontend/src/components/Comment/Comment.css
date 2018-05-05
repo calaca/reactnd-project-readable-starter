@@ -28,7 +28,7 @@
 .comments-list .comment .vote .down {
   width: 20px;
   height: 20px;
-  background-image: url('../assets/arrow.svg');
+  background-image: url('../../assets/imgs/arrow.svg');
   background-size: 90%;
   background-repeat: no-repeat;
   background-position: center center;

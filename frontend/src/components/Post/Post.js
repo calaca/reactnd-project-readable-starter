@@ -1,17 +1,19 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { submitPostVoteScore } from '../../actions/PostActions';
 import './Post.css';
 
 class Post extends Component {
   render() {
-    const { post } = this.props;
+    const { post, dispatch } = this.props;
 
     return (
       <article className="post">
         <div className="vote">
-          <span className="up"></span>
+          <span className="up" onClick={() => { dispatch(submitPostVoteScore(post.id, 'upVote')) }}></span>
           <span className="count">{post.voteScore}</span>
-          <span className="down"></span>
+          <span className="down" onClick={() => { dispatch(submitPostVoteScore(post.id, 'downVote')) }}></span>
         </div>
         <div className="thumbnail"></div>
         <div className="content">
@@ -33,4 +35,4 @@ class Post extends Component {
   }
 }
 
-export default Post;
+export default connect()(Post);

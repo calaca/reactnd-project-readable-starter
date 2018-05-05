@@ -28,7 +28,7 @@
 .posts-wrapper .post .vote .down {
   width: 20px;
   height: 20px;
-  background-image: url('../assets/arrow.svg');
+  background-image: url('../../assets/imgs/arrow.svg');
   background-size: 90%;
   background-repeat: no-repeat;
   background-position: center center;
@@ -60,7 +60,7 @@
   height: 70px;
   width: 70px;
   background-color: #2c3141;
-  background-image: url(../assets/notepad.svg);
+  background-image: url(../../assets/imgs/notepad.svg);
   background-position: center center;
   background-size: 80% auto;
   background-repeat: no-repeat;

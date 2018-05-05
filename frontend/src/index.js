@@ -4,15 +4,15 @@ import { BrowserRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import Store from './store';
 import './index.css';
-import App from './components/App';
+import App from './components/App/App';
 import registerServiceWorker from './registerServiceWorker';
 
 ReactDOM.render(
-  <BrowserRouter basename={process.env.PUBLIC_URL}>
-    <Provider store={Store} >
+  <Provider store={Store} >
+    <BrowserRouter basename={process.env.PUBLIC_URL}>
       <App />
-    </Provider>
-  </BrowserRouter>,
+    </BrowserRouter>
+  </Provider>,
   document.getElementById('root')
 );
 registerServiceWorker();

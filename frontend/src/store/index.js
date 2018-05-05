@@ -1,9 +1,10 @@
 import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
 import logger from 'redux-logger';
 import thunk from 'redux-thunk';
-import { initReducer } from '../reducers';
+import { postReducer } from '../reducers/PostReducer';
+import { categoryReducer } from '../reducers/CategoryReducer';
 
-const reducers = combineReducers({ initReducer });
+const reducers = combineReducers({ postReducer, categoryReducer });
 
 const middlewares = process.env.NODE_ENV === 'development' ?
   applyMiddleware(logger, thunk) :
