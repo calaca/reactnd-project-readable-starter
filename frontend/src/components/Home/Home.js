@@ -36,7 +36,7 @@ class Home extends Component {
             <div className="posts-wrapper">
               {
                 posts.length !== 0 ? posts.map(post => <Post key={post.id} post={post} />)
-                : <p>No posts found for this category.</p>
+                : <p className="no-posts">No posts found for this category.</p>
               }
             </div>
           </section>

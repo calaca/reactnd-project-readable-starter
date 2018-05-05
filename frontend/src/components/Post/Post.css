@@ -91,6 +91,15 @@
   color: #7a2a9c;
   font-weight: 400;
   font-size: 18px;
+  padding-right: 0.5em;
+  margin-right: 0.5em;
+  border-right: 1px solid #666;
+}
+
+.posts-wrapper .post .content .title .date {
+  color: #666;
+  font-size: 12px;
+  font-weight: 200;
 }
 
 .posts-wrapper .post .content .details {
@@ -148,5 +157,16 @@
   .posts-wrapper .post .content {
     width: calc(100% - 45px);
     margin-left: 10px;
+  }
+
+  .posts-wrapper .post .content .title a {
+    border-right: 0;
+    padding-right: 0;
+    margin-right: 0;
+  }
+
+  .posts-wrapper .post .content .title .date {
+    margin-top: 5px;
+    display: block;
   }
 }

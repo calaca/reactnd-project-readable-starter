@@ -4,3 +4,9 @@
   padding: 1em;
   border-radius: 4px;
 }
+
+.posts-wrapper .no-posts {
+  font-size: 16px;
+  color: #666;
+  font-weight: 200;
+}

@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { submitPostVoteScore } from '../../actions/PostActions';
+import dateFormatter from '../../helper/dateFormatter';
 import './Post.css';
 
 const Post = ({ post, dispatch }) => (
@@ -13,7 +14,10 @@ const Post = ({ post, dispatch }) => (
     </div>
     <div className="thumbnail"></div>
     <div className="content">
-      <h3 className="title"><Link to={`/${post.category}/${post.id}`}>{post.title}</Link></h3>
+      <h3 className="title">
+        <Link to={`/${post.category}/${post.id}`}>{post.title}</Link>
+        <span className="date">{`${dateFormatter(post.timestamp)} ago`}</span>
+      </h3>
       <p className="details">submitted by <span>{post.author}</span></p>
       <div className="comments">
         <p>

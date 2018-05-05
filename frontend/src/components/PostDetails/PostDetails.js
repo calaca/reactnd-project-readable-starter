@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Comment from '../Comment/Comment';
+import dateFormatter from '../../helper/dateFormatter';
 import './PostDetails.css';
 
 class PostDetails extends Component {
@@ -14,7 +15,10 @@ class PostDetails extends Component {
               <span className="down"></span>
             </div>
             <div className="content">
-              <h3 className="title"><a href="">This is the post title</a></h3>
+              <h3 className="title">
+                <a href="">This is the post title</a>
+                <span className="date">{`${dateFormatter(1468479767190)} ago`}</span>
+              </h3>
               <p className="details">submitted by <span>person</span></p>
               <div className="comments">
                 <p>
