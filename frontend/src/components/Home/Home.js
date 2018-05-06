@@ -17,6 +17,7 @@ class Home extends Component {
     let { posts } = this.props;
     const { dispatch, orderByTarget } = this.props;
     posts = this.sortPosts(posts);
+    posts = posts.filter(post => !post.deleted);
 
     return (
       <Fragment>

@@ -62,6 +62,21 @@ export function postReducer(state = initialState, action) {
         ...state,
         posts
       }
+    case actionTypes.UNSET_POST:
+      posts = state.posts;
+      posts = posts.map(post => {
+        if (post.id === action.post.id) {
+          return {
+            ...action.post
+          }
+        }
+        return post;
+      });
+
+      return {
+        ...state,
+        posts
+      }
     default:
       return state
   }

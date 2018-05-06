@@ -7,7 +7,7 @@ import './PostForm.css';
 class PostForm extends Component {
   state = {
     form: {
-      category: 'redux'
+      category: this.props.categories[0].name
     },
     message: ''
   }

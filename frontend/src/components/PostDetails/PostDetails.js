@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import sortBy from 'sort-by';
 import Comment from '../Comment/Comment';
 import dateFormatter from '../../helpers/dateFormatter';
-import { loadPostData, submitPostVoteScore } from '../../actions/PostActions';
+import { loadPostData, submitPostVoteScore, removePost } from '../../actions/PostActions';
 import { loadComments } from '../../actions/CommentActions';
 import './PostDetails.css';
 
@@ -14,6 +14,13 @@ class PostDetails extends Component {
     const { dispatch } = this.props;
     dispatch(loadPostData(id));
     dispatch(loadComments(id));
+  }
+
+  deletePost = (id) => {
+    const { dispatch } = this.props;
+    dispatch(removePost(id));
+
+    this.props.history.push('/');
   }
 
   render() {
@@ -53,7 +60,12 @@ class PostDetails extends Component {
               <div className="info-actions">
                 <span className="category">{post.category}</span>
                 <Link to={`/${post.category}/${post.id}/edit`} className="edit">edit</Link>
-                <button className="delete">delete</button>
+                <button
+                  className="delete"
+                  onClick={() => this.deletePost(post.id)}
+                >
+                  delete
+                </button>
               </div>
             </div>
             <div className="body">

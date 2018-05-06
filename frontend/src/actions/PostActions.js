@@ -1,4 +1,11 @@
-import { getPosts, getPostsByCategory, votePost, getPostDetails, addPost } from '../utils/PostsAPI';
+import {
+  getPosts,
+  getPostsByCategory,
+  votePost,
+  getPostDetails,
+  addPost,
+  deletePost
+} from '../utils/PostsAPI';
 
 // Action Type Constants
 export const actionTypes = {
@@ -7,7 +14,8 @@ export const actionTypes = {
   UPDATE_POST_VOTE_SCORE: 'UPDATE_POST_VOTE_SCORE',
   CHANGE_ODER_BY_TARGET: 'CHANGE_ODER_BY_TARGET',
   SET_POST_DATA: 'SET_POST_DATA',
-  SET_NEW_POST: 'SET_NEW_POST'
+  SET_NEW_POST: 'SET_NEW_POST',
+  UNSET_POST: 'UNSET_POST'
 };
 
 // Sync Actions
@@ -54,6 +62,13 @@ export function setNewPost(post) {
   }
 };
 
+export function unsetPost(post) {
+  return {
+    type: actionTypes.UNSET_POST,
+    post
+  }
+};
+
 // Async Actions
 export function loadInitialData() {
   return dispatch => {
@@ -90,5 +105,12 @@ export function addNewPost(post) {
   return dispatch => {
     addPost(post)
       .then(newPost => dispatch(setNewPost(newPost)))
+  }
+};
+
+export function removePost(id) {
+  return dispatch => {
+    deletePost(id)
+      .then(post => dispatch(unsetPost(post)))
   }
 };
