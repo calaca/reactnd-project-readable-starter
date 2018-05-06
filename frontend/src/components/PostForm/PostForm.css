@@ -4,6 +4,15 @@
   min-height: 480px;
 }
 
+.new-edit-post .form-wrapper p {
+  margin: 10px 0;
+  padding: 10px;
+  background-color: #e1e1e1;
+  color: #666;
+  font-size: 14px;
+  font-weight: 200;
+}
+
 .new-edit-post .form-wrapper form {
   margin-top: 1em;
 }

@@ -54,6 +54,14 @@ export function postReducer(state = initialState, action) {
         ...state,
         post: action.post
       }
+    case actionTypes.SET_NEW_POST:
+      posts = state.posts;
+      posts.push(action.post);
+
+      return {
+        ...state,
+        posts
+      }
     default:
       return state
   }

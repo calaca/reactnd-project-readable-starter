@@ -1,4 +1,4 @@
-import { getCategories } from '../util/PostsAPI';
+import { getCategories } from '../utils/PostsAPI';
 
 // Action Type Constants
 export const actionTypes = {

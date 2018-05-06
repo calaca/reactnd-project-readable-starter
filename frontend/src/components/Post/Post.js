@@ -8,9 +8,17 @@ import './Post.css';
 const Post = ({ post, dispatch }) => (
   <article className="post">
     <div className="vote">
-      <span className="up" onClick={() => { dispatch(submitPostVoteScore(post.id, 'upVote')) }}></span>
+      <span
+        className="up"
+        onClick={() => { dispatch(submitPostVoteScore(post.id, 'upVote')) }}
+      >
+      </span>
       <span className="count">{post.voteScore}</span>
-      <span className="down" onClick={() => { dispatch(submitPostVoteScore(post.id, 'downVote')) }}></span>
+      <span
+        className="down"
+        onClick={() => { dispatch(submitPostVoteScore(post.id, 'downVote')) }}
+      >
+      </span>
     </div>
     <div className="thumbnail"></div>
     <div className="content">

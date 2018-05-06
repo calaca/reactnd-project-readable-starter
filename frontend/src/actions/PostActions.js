@@ -1,4 +1,4 @@
-import { getPosts, getPostsByCategory, votePost, getPostDetails } from '../util/PostsAPI';
+import { getPosts, getPostsByCategory, votePost, getPostDetails, addPost } from '../utils/PostsAPI';
 
 // Action Type Constants
 export const actionTypes = {
@@ -6,7 +6,8 @@ export const actionTypes = {
   SET_LOADING: 'SET_LOADING',
   UPDATE_POST_VOTE_SCORE: 'UPDATE_POST_VOTE_SCORE',
   CHANGE_ODER_BY_TARGET: 'CHANGE_ODER_BY_TARGET',
-  SET_POST_DATA: 'SET_POST_DATA'
+  SET_POST_DATA: 'SET_POST_DATA',
+  SET_NEW_POST: 'SET_NEW_POST'
 };
 
 // Sync Actions
@@ -44,7 +45,14 @@ export function setPostData(post) {
     type: actionTypes.SET_POST_DATA,
     post
   }
-}
+};
+
+export function setNewPost(post) {
+  return {
+    type: actionTypes.SET_NEW_POST,
+    post
+  }
+};
 
 // Async Actions
 export function loadInitialData() {
@@ -75,5 +83,12 @@ export function loadPostData(id) {
   return dispatch => {
     getPostDetails(id)
       .then(post => dispatch(setPostData(post)))
+  }
+};
+
+export function addNewPost(post) {
+  return dispatch => {
+    addPost(post)
+      .then(newPost => dispatch(setNewPost(newPost)))
   }
 };

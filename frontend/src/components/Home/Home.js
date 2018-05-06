@@ -10,7 +10,6 @@ import './Home.css';
 class Home extends Component {
   sortPosts = (posts) => {
     const { orderByTarget } = this.props;
-
     return posts.sort(sortBy(`-${orderByTarget}`))
   }
 
