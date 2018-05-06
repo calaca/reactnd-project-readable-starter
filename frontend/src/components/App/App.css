@@ -9,11 +9,21 @@ main {
   min-height: 550px;
 }
 
-section .section-title {
+section .section-title,
+section .section-subtitle {
   color: #621483;
   font-size: 24px;
   font-weight: 400;
   margin: 0;
+}
+
+section .section-subtitle {
+  font-size: 20px;
+  margin-bottom: 20px;
+}
+
+section .section-subtitle span {
+  font-size: 14px;
 }
 
 section .actions {
@@ -66,6 +76,7 @@ section .order-by select:focus > option:checked {
   text-transform: uppercase;
   border: 0;
   border-radius: 4px;
+  text-decoration: none;
   cursor: pointer;
   transition: all 0.4s ease-in-out;
 }

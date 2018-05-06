@@ -1,59 +1,92 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
+import sortBy from 'sort-by';
 import Comment from '../Comment/Comment';
-import dateFormatter from '../../helper/dateFormatter';
+import dateFormatter from '../../helpers/dateFormatter';
+import { loadPostData, submitPostVoteScore } from '../../actions/PostActions';
+import { loadComments } from '../../actions/CommentActions';
 import './PostDetails.css';
 
 class PostDetails extends Component {
+  componentDidMount() {
+    const id = this.props.match.params.post;
+    const { dispatch } = this.props;
+    dispatch(loadPostData(id));
+    dispatch(loadComments(id));
+  }
+
   render() {
+    const { dispatch } = this.props;
+    const { post } = this.props.postReducer;
+    const { comments } = this.props.commentReducer;
+    comments.sort(sortBy('-voteScore'));
+
     return (
       <main className="post-details">
-        <div className="posts-wrapper">
+        <section className="posts-wrapper">
           <article className="post">
             <div className="vote">
-              <span className="up"></span>
-              <span className="count">5</span>
-              <span className="down"></span>
+              <span
+                className="up"
+                onClick={() => { dispatch(submitPostVoteScore(post.id, 'upVote')) }}
+              >
+              </span>
+              <span className="count">{post.voteScore}</span>
+              <span
+                className="down"
+                onClick={() => { dispatch(submitPostVoteScore(post.id, 'downVote')) }}
+              >
+              </span>
             </div>
             <div className="content">
               <h3 className="title">
-                <a href="">This is the post title</a>
-                <span className="date">{`${dateFormatter(1468479767190)} ago`}</span>
+                <a href="">{post.title}</a>
+                <span className="date">{`${dateFormatter(post.timestamp)} ago`}</span>
               </h3>
-              <p className="details">submitted by <span>person</span></p>
+              <p className="details">submitted by <span>{post.author}</span></p>
               <div className="comments">
                 <p>
-                  <span className="count">3</span> comments
+                  <span className="count">{post.commentCount}</span> comments
             </p>
               </div>
               <div className="info-actions">
-                <span className="category">category</span>
-                <button className="edit">edit</button>
+                <span className="category">{post.category}</span>
+                <Link to={`/${post.category}/${post.id}/edit`} className="edit">edit</Link>
                 <button className="delete">delete</button>
               </div>
             </div>
             <div className="body">
               <p>
-                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Qui maxime a id non culpa ducimus itaque. Distinctio, nihil maxime. Cum assumenda reprehenderit numquam est ea odit quisquam porro vitae vel.
-                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Harum, reiciendis quos ipsam sed maiores perferendis vitae voluptatum laudantium cupiditate voluptatibus laboriosam doloremque tempora id odit labore, fugit natus, ducimus eos?
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita accusantium consectetur modi neque asperiores, dignissimos earum aliquam culpa, quis hic in, libero officia sed. Necessitatibus unde repellat nesciunt aspernatur numquam!
+                {post.body}
               </p>
             </div>
           </article>
-        </div>
-        <div className="comments-wrapper">
+        </section>
+        <section className="comments-wrapper">
           <form>
+            <h4 className="form-title">Add or edit a comment</h4>
             <input type="text" name="name" placeholder="Your name" />
             <textarea name="comment" id="comment" placeholder="Type your message here." />
             <input className="btn-primary" type="submit" value="save" />
           </form>
           <div className="comments-list">
-            <Comment />
-            <Comment />
+            <h3 className="section-subtitle">Comments <span>({post.commentCount})</span></h3>
+            {
+              comments.length !== 0 ? comments.map(comment => <Comment key={comment.id} comment={comment} />) : <p className="no-comments">There are no comments yet.</p>
+            }
           </div>
-        </div>
+        </section>
       </main>
     )
   }
 }
 
-export default PostDetails;
+const mapStateToProps = ({ postReducer, commentReducer }) => {
+  return {
+    postReducer,
+    commentReducer
+  };
+}
+
+export default connect(mapStateToProps)(PostDetails);

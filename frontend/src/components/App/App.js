@@ -23,9 +23,10 @@ class App extends Component {
       loading ? <Loading loading={loading} />
       : <Switch>
           <Route exact path="/" render={(props) => (<Home {...props} />)} />
+          <Route exact path="/post/new" render={(props) => (<PostForm {...props} />)} />
           <Route exact path="/:category" render={(props) => (<Home {...props} />)} />
           <Route exact path="/:category/:post" render={(props) => (<PostDetails {...props} />)} />
-          <Route exact path="/:category/:post/new-edit" render={(props) => (<PostForm {...props} />)} />
+          <Route exact path="/:category/:post/edit" render={(props) => (<PostForm {...props} />)} />
           <Route component={NotFound} />
         </Switch>;
 

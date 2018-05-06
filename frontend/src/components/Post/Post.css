@@ -132,20 +132,23 @@
   border-radius: 4px;
 }
 
-.posts-wrapper .post .content .info-actions button {
+.posts-wrapper .post .content .info-actions button,
+.posts-wrapper .post .content .info-actions a {
   margin-left: 5px;
+  font-size: 14px;
   background: none;
   border: 0;
   color: #666;
   cursor: pointer;
+  text-decoration: none;
   transition: all 0.4s ease-in-out;
 }
 
-.posts-wrapper .post .content .info-actions button.edit:hover {
+.posts-wrapper .post .content .info-actions .edit:hover {
   color: #3498db;
 }
 
-.posts-wrapper .post .content .info-actions button.delete:hover {
+.posts-wrapper .post .content .info-actions .delete:hover {
   color: #e74c3c;
 }
 

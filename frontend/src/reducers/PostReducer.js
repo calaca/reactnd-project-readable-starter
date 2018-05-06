@@ -3,6 +3,7 @@ import { actionTypes } from '../actions/PostActions';
 const initialState = {
   loading: true,
   posts: [],
+  post: {},
   orderByTarget: 'voteScore'
 };
 
@@ -19,24 +20,39 @@ export function postReducer(state = initialState, action) {
         loading: action.status
       }
     case actionTypes.UPDATE_POST_VOTE_SCORE:
-      let posts = state.posts;
+      let { posts, post } = state;
+
       posts = posts.map(post => {
         if (post.id === action.id) {
           return {
             ...post,
             voteScore: action.voteScore
-          };
+          }
         }
         return post;
       });
+
+      if (post) {
+        post = {
+          ...post,
+          voteScore: action.voteScore
+        }
+      }
+
       return {
         ...state,
-        posts
+        posts,
+        post
       }
     case actionTypes.CHANGE_ODER_BY_TARGET:
       return {
         ...state,
         orderByTarget: action.target
+      }
+    case actionTypes.SET_POST_DATA:
+      return {
+        ...state,
+        post: action.post
       }
     default:
       return state

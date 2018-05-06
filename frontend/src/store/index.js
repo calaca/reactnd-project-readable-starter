@@ -3,8 +3,9 @@ import logger from 'redux-logger';
 import thunk from 'redux-thunk';
 import { postReducer } from '../reducers/PostReducer';
 import { categoryReducer } from '../reducers/CategoryReducer';
+import { commentReducer } from '../reducers/CommentReducer';
 
-const reducers = combineReducers({ postReducer, categoryReducer });
+const reducers = combineReducers({ postReducer, categoryReducer, commentReducer });
 
 const middlewares = process.env.NODE_ENV === 'development' ?
   applyMiddleware(logger, thunk) :

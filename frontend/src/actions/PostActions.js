@@ -1,11 +1,12 @@
-import { getPosts, getPostsByCategory, votePost } from '../util/PostsAPI';
+import { getPosts, getPostsByCategory, votePost, getPostDetails } from '../util/PostsAPI';
 
 // Action Type Constants
 export const actionTypes = {
   SET_INITIAL_DATA: 'SET_INITIAL_DATA',
   SET_LOADING: 'SET_LOADING',
   UPDATE_POST_VOTE_SCORE: 'UPDATE_POST_VOTE_SCORE',
-  CHANGE_ODER_BY_TARGET: 'CHANGE_ODER_BY_TARGET'
+  CHANGE_ODER_BY_TARGET: 'CHANGE_ODER_BY_TARGET',
+  SET_POST_DATA: 'SET_POST_DATA'
 };
 
 // Sync Actions
@@ -38,6 +39,13 @@ export function changeOrderByTarget(target) {
   }
 };
 
+export function setPostData(post) {
+  return {
+    type: actionTypes.SET_POST_DATA,
+    post
+  }
+}
+
 // Async Actions
 export function loadInitialData() {
   return dispatch => {
@@ -60,5 +68,12 @@ export function submitPostVoteScore(id, option) {
   return dispatch => {
     votePost(id, option)
       .then(post => dispatch(updatePostVoteScore(post.id, post.voteScore)))
+  }
+};
+
+export function loadPostData(id) {
+  return dispatch => {
+    getPostDetails(id)
+      .then(post => dispatch(setPostData(post)))
   }
 };

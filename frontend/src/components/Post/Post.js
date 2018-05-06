@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { submitPostVoteScore } from '../../actions/PostActions';
-import dateFormatter from '../../helper/dateFormatter';
+import dateFormatter from '../../helpers/dateFormatter';
 import './Post.css';
 
 const Post = ({ post, dispatch }) => (
@@ -26,7 +26,7 @@ const Post = ({ post, dispatch }) => (
       </div>
       <div className="info-actions">
         <span className="category">{post.category}</span>
-        <button className="edit">edit</button>
+        <Link to={`/${post.category}/${post.id}/edit`} className="edit">edit</Link>
         <button className="delete">delete</button>
       </div>
     </div>

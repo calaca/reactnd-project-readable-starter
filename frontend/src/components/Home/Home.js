@@ -1,5 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 import Post from '../Post/Post';
 import CategoryList from '../CategoryList/CategoryList';
 import { changeOrderByTarget } from '../../actions/PostActions';
@@ -31,7 +32,7 @@ class Home extends Component {
                   <option value="timestamp">date</option>
                 </select>
               </div>
-              <button className="btn-primary green">New Post</button>
+              <Link to="/post/new" className="btn-primary green">New Post</Link>
             </div>
             <div className="posts-wrapper">
               {
