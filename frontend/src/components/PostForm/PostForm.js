@@ -62,6 +62,17 @@ class PostForm extends Component {
           {
             message && <p className="message">{message}</p>
           }
+          <label htmlFor="category">Category</label>
+          <select
+            name="category"
+            id="category"
+            value={this.state.category}
+            onChange={e => this.onChangeHandler(e)}
+          >
+            {
+              categories.map(category => <option key={category.path} value={category.name}>{category.name}</option>)
+            }
+          </select>
           <form onSubmit={this.newPost}>
             <input
               type="text"
@@ -84,16 +95,6 @@ class PostForm extends Component {
               onChange={e => this.onChangeHandler(e)}
               placeholder="Post text/body"
             />
-            <select
-              name="category"
-              id="category"
-              value={this.state.category}
-              onChange={e => this.onChangeHandler(e)}
-            >
-              {
-                categories.map(category => <option key={category.path} value={category.name}>{category.name}</option>)
-              }
-            </select>
             <input className="btn-primary" type="submit" value="save" />
           </form>
         </section>

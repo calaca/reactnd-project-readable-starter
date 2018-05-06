@@ -17,6 +17,10 @@
   margin-top: 1em;
 }
 
+.new-edit-post .form-wrapper select {
+  margin-top: 2em !important;
+}
+
 @media (max-width: 769px) {
   .new-edit-post .form-wrapper {
     width: 100%;

@@ -34,12 +34,14 @@ section .actions {
   margin-top: 0.5em;
 }
 
-section .actions .order-by {
+section .actions .order-by,
+.new-edit-post .form-wrapper label {
   font-size: 14px;
   color: #270137;
 }
 
-section .order-by select {
+section .order-by select,
+.new-edit-post .form-wrapper select {
   -moz-appearance: none;
   -webkit-appearance: none;
   appearance: none;
@@ -55,16 +57,20 @@ section .order-by select {
   transition: 0.4s ease-in-out;
 }
 
-section .order-by select:hover {
+section .order-by select:hover,
+.new-edit-post .form-wrapper select:hover {
   background-color: #672385;
 }
 
 section .order-by select option:checked,
-section .order-by select option:hover {
+section .order-by select option:hover,
+.new-edit-post .form-wrapper select option:checked,
+.new-edit-post .form-wrapper select option:hover {
   box-shadow: 0 0 10px 100px #551d6d inset;
 }
 
-section .order-by select:focus > option:checked { 
+section .order-by select:focus > option:checked,
+.new-edit-post .form-wrapper select:focus > option:checked { 
   background: #551d6d !important;
 }
 
