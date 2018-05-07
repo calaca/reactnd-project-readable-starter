@@ -61,7 +61,6 @@ class EditPost extends Component {
         post={post}
         categories={categories}
         message={message}
-        newPost={this.newPost}
       />
     )
   }

@@ -24,8 +24,8 @@ class AddPost extends Component {
       id: Date.now().toString(),
       timestamp: Date.now(),
       title: form.title,
-      body: form.comment,
-      author: form.name,
+      body: form.body,
+      author: form.author,
       category: form.category
     }));
 

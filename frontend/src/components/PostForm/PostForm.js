@@ -1,12 +1,12 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import './PostForm.css';
 
-class PostForm extends Component {
+class PostForm extends PureComponent {
   state = {
     form: {
-      name: '',
+      author: '',
       title: '',
-      comment: '',
+      body: '',
       category: this.props.categories[0].name
     }
   }
@@ -23,10 +23,21 @@ class PostForm extends Component {
     });
   }
 
+  componentWillReceiveProps(nextProps) {
+    const post = nextProps.post;
+
+    if (post && Object.keys(post).length !== 0) {
+      this.setState({
+        form: {
+          ...post
+        }
+      });
+    }
+  }
+
   render() {
     const { title, categories, message, newPost } = this.props;
-    const post = this.props.post || {};
-    console.log(post);
+    const { form } = this.state;
 
     return (
       <main className="new-edit-post">
@@ -39,36 +50,32 @@ class PostForm extends Component {
           <select
             name="category"
             id="category"
-            defaultValue={post.category}
-            // value={this.state.form.category}
+            value={form.category}
             onChange={e => this.onChangeHandler(e)}
           >
             {
               categories.map(category => <option key={category.path} value={category.name}>{category.name}</option>)
             }
           </select>
-          <form onSubmit={(e) => newPost(e, this.state.form)}>
+          <form onSubmit={(e) => newPost(e, form)}>
             <input
               type="text"
-              name="name"
-              defaultValue={post.author}
-              // value={this.state.form.name}
+              name="author"
+              value={form.author}
               onChange={e => this.onChangeHandler(e)}
               placeholder="Your name"
             />
             <input
               type="text"
               name="title"
-              defaultValue={post.title}
-              // value={this.state.form.title}
+              value={form.title}
               onChange={e => this.onChangeHandler(e)}
               placeholder="Post title"
             />
             <textarea
-              name="comment"
-              id="comment"
-              defaultValue={post.body}
-              // value={this.state.form.comment}
+              name="body"
+              id="body"
+              value={form.body}
               onChange={e => this.onChangeHandler(e)}
               placeholder="Post text/body"
             />
