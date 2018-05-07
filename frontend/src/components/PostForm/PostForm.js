@@ -1,41 +1,14 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import { addNewPost } from '../../actions/PostActions';
-import { loadCategories } from '../../actions/CategoryActions';
 import './PostForm.css';
 
 class PostForm extends Component {
   state = {
     form: {
+      name: '',
+      title: '',
+      comment: '',
       category: this.props.categories[0].name
-    },
-    message: ''
-  }
-
-  componentDidMount() {
-    const { dispatch } = this.props;
-    dispatch(loadCategories());
-  }
-
-  newPost = (e) => {
-    e.preventDefault();
-    e.target.reset();
-
-    const { form } = this.state;
-    const { dispatch } = this.props;
-
-    dispatch(addNewPost({
-      id: Date.now().toString(),
-      timestamp: Date.now(),
-      title: form.title,
-      body: form.comment,
-      author: form.name,
-      category: form.category
-    }));
-
-    this.setState({
-      message: 'New post added successfully.'
-    });
+    }
   }
 
   onChangeHandler = (e) => {
@@ -51,10 +24,10 @@ class PostForm extends Component {
   }
 
   render() {
-    const { categories } = this.props;
-    const { message } = this.state;
-    const path = this.props.match.path;
-    const title = path === '/post/new' ? 'New Post' : 'Edit Post';
+    const { title, categories, message, newPost } = this.props;
+    const post = this.props.post || {};
+    console.log(post);
+
     return (
       <main className="new-edit-post">
         <section className="form-wrapper">
@@ -66,32 +39,36 @@ class PostForm extends Component {
           <select
             name="category"
             id="category"
-            value={this.state.category}
+            defaultValue={post.category}
+            // value={this.state.form.category}
             onChange={e => this.onChangeHandler(e)}
           >
             {
               categories.map(category => <option key={category.path} value={category.name}>{category.name}</option>)
             }
           </select>
-          <form onSubmit={this.newPost}>
+          <form onSubmit={(e) => newPost(e, this.state.form)}>
             <input
               type="text"
               name="name"
-              value={this.state.name}
+              defaultValue={post.author}
+              // value={this.state.form.name}
               onChange={e => this.onChangeHandler(e)}
               placeholder="Your name"
             />
             <input
               type="text"
               name="title"
-              value={this.state.title}
+              defaultValue={post.title}
+              // value={this.state.form.title}
               onChange={e => this.onChangeHandler(e)}
               placeholder="Post title"
             />
             <textarea
               name="comment"
               id="comment"
-              value={this.state.comment}
+              defaultValue={post.body}
+              // value={this.state.form.comment}
               onChange={e => this.onChangeHandler(e)}
               placeholder="Post text/body"
             />
@@ -103,8 +80,4 @@ class PostForm extends Component {
   }
 }
 
-const mapStateToProps = ({ categoryReducer }) => {
-  return categoryReducer;
-};
-
-export default connect(mapStateToProps)(PostForm);
+export default PostForm;

@@ -7,7 +7,8 @@ import Footer from '../Footer/Footer';
 import Top from '../Top/Top';
 import NotFound from '../NotFound/NotFound';
 import PostDetails from '../PostDetails/PostDetails';
-import PostForm from '../PostForm/PostForm';
+import AddPost from '../AddPost/AddPost';
+import EditPost from '../EditPost/EditPost';
 import Loading from '../Loading/Loading';
 import './App.css';
 
@@ -23,10 +24,10 @@ class App extends Component {
       loading ? <Loading loading={loading} />
       : <Switch>
           <Route exact path="/" render={(props) => (<Home {...props} />)} />
-          <Route exact path="/post/new" render={(props) => (<PostForm {...props} />)} />
+          <Route exact path="/post/new" render={(props) => (<AddPost {...props} />)} />
           <Route exact path="/:category" render={(props) => (<Home {...props} />)} />
           <Route exact path="/:category/:post" render={(props) => (<PostDetails {...props} />)} />
-          <Route exact path="/:category/:post/edit" render={(props) => (<PostForm {...props} />)} />
+          <Route exact path="/:category/:post/edit" render={(props) => (<EditPost {...props} />)} />
           <Route component={NotFound} />
         </Switch>;
 
