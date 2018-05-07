@@ -7,7 +7,7 @@ class PostForm extends PureComponent {
       author: '',
       title: '',
       body: '',
-      category: this.props.categories[0].name
+      category: this.props.categories[0].name || 'redux'
     }
   }
 
