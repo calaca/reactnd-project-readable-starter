@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { addNewPost } from '../../actions/PostActions';
+import { updatePost } from '../../actions/PostActions';
 import { loadPostData } from '../../actions/PostActions';
 import { loadCategories } from '../../actions/CategoryActions';
 import PostForm from '../PostForm/PostForm';
@@ -16,26 +16,17 @@ class EditPost extends Component {
     dispatch(loadPostData(this.props.match.params.post));
   }
 
-  newPost = (e, form) => {
+  editPost = (e, form) => {
     e.preventDefault();
     e.target.reset();
 
     const { dispatch } = this.props;
 
-    dispatch(addNewPost({
-      id: Date.now().toString(),
-      timestamp: Date.now(),
-      title: form.title,
-      body: form.comment,
-      author: form.name,
-      category: form.category
-    }));
+    dispatch(updatePost(form.id, form.title, form.body));
 
     this.setState({
       message: 'Post edited successfully.'
     });
-
-    this.props.history.push('/');
   }
 
   onChangeHandler = (e) => {
@@ -61,6 +52,7 @@ class EditPost extends Component {
         post={post}
         categories={categories}
         message={message}
+        onSubmitHandler={this.editPost}
       />
     )
   }

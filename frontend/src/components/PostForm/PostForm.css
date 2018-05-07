@@ -21,6 +21,13 @@
   margin-top: 2em !important;
 }
 
+.new-edit-post .form-wrapper select:disabled,
+.new-edit-post .form-wrapper select:disabled:hover {
+  color: #666;
+  background-color: #ebebe4;
+  cursor: default;
+}
+
 @media (max-width: 769px) {
   .new-edit-post .form-wrapper {
     width: 100%;

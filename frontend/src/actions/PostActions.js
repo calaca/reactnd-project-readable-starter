@@ -4,7 +4,8 @@ import {
   votePost,
   getPostDetails,
   addPost,
-  deletePost
+  deletePost,
+  editPost
 } from '../utils/PostsAPI';
 
 // Action Type Constants
@@ -15,7 +16,8 @@ export const actionTypes = {
   CHANGE_ODER_BY_TARGET: 'CHANGE_ODER_BY_TARGET',
   SET_POST_DATA: 'SET_POST_DATA',
   SET_NEW_POST: 'SET_NEW_POST',
-  UNSET_POST: 'UNSET_POST'
+  UNSET_POST: 'UNSET_POST',
+  ALTER_POST: 'ALTER_POST'
 };
 
 // Sync Actions
@@ -69,6 +71,13 @@ export function unsetPost(post) {
   }
 };
 
+export function alterPost(post) {
+  return {
+    type: actionTypes.ALTER_POST,
+    post
+  }
+};
+
 // Async Actions
 export function loadInitialData() {
   return dispatch => {
@@ -112,5 +121,12 @@ export function removePost(id) {
   return dispatch => {
     deletePost(id)
       .then(post => dispatch(unsetPost(post)))
+  }
+};
+
+export function updatePost(id, title, body) {
+  return dispatch => {
+    editPost(id, title, body)
+      .then(post => dispatch(alterPost(post)))
   }
 };

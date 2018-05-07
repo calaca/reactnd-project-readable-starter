@@ -43,7 +43,7 @@ class AddPost extends Component {
         title='New Post'
         categories={categories}
         message={message}
-        newPost={this.newPost}
+        onSubmitHandler={this.newPost}
       />
     )
   }

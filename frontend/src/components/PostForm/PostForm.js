@@ -36,7 +36,7 @@ class PostForm extends PureComponent {
   }
 
   render() {
-    const { title, categories, message, newPost } = this.props;
+    const { title, categories, message, onSubmitHandler } = this.props;
     const { form } = this.state;
 
     return (
@@ -48,6 +48,7 @@ class PostForm extends PureComponent {
           }
           <label htmlFor="category">Category</label>
           <select
+            disabled={title === 'Edit Post' ? true : false}
             name="category"
             id="category"
             value={form.category}
@@ -57,8 +58,9 @@ class PostForm extends PureComponent {
               categories.map(category => <option key={category.path} value={category.name}>{category.name}</option>)
             }
           </select>
-          <form onSubmit={(e) => newPost(e, form)}>
+          <form onSubmit={(e) => onSubmitHandler(e, form)}>
             <input
+              disabled={title === 'Edit Post' ? true : false}
               type="text"
               name="author"
               value={form.author}
