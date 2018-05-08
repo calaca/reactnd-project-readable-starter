@@ -1,4 +1,4 @@
-import { getPostComments, voteComment, addComment } from '../utils/PostsAPI';
+import { getPostComments, voteComment, addComment, deleteComment } from '../utils/PostsAPI';
 
 // Action Type Constants
 export const actionTypes = {
@@ -57,5 +57,12 @@ export function addNewComment(comment) {
   return dispatch => {
     addComment(comment)
       .then(newComment => dispatch(setNewComment(newComment)))
+  }
+};
+
+export function removeComment(id) {
+  return dispatch => {
+    deleteComment(id)
+      .then(comment => dispatch(unsetComment(comment)))
   }
 };

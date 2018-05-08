@@ -31,10 +31,25 @@ export function commentReducer(state = initialState, action) {
       comments = state.comments;
       comments.push(action.comment);
 
-     return {
+      return {
         ...state,
         comments
-     }
+      }
+    case actionTypes.UNSET_COMMENT:
+      comments = state.comments;
+      comments = comments.map(comment => {
+        if (comment.id === action.comment.id) {
+          return {
+            ...action.comment
+          }
+        }
+        return comment;
+      });
+
+      return {
+        ...state,
+        comments
+      }
     default:
       return state;
   }

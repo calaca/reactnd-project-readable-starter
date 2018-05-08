@@ -145,7 +145,7 @@ class PostDetails extends Component {
           <div className="comments-list">
             <h3 className="section-subtitle">Comments <span>({post.commentCount})</span></h3>
             {
-              comments.length !== 0 ? comments.map(comment => <Comment key={comment.id} comment={comment} />) : <p className="no-comments">There are no comments yet.</p>
+              comments.length !== 0 ? comments.map(comment => <Comment key={comment.id} comment={comment} post={post.id} />) : <p className="no-comments">There are no comments yet.</p>
             }
           </div>
         </section>
