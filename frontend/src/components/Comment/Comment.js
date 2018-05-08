@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import dateFormatter from '../../helpers/dateFormatter';
-import { submitCommentVoteScore, removeComment, loadComments } from '../../actions/CommentActions';
+import { submitCommentVoteScore, removeComment } from '../../actions/CommentActions';
 import { loadPostData, loadInitialData } from '../../actions/PostActions';
 import './Comment.css';
 
@@ -9,7 +9,6 @@ class Comment extends Component {
   onDeleteHandler = () => {
     const { comment, dispatch, post } = this.props;
     dispatch(removeComment(comment.id));
-    dispatch(loadComments(post));
     dispatch(loadPostData(post));
     dispatch(loadInitialData());
   }

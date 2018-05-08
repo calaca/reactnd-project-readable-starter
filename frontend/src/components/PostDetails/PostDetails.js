@@ -74,7 +74,8 @@ class PostDetails extends Component {
     const { form } = this.state;
     const { dispatch } = this.props;
     const { post } = this.props.postReducer;
-    const { comments } = this.props.commentReducer;
+    let { comments } = this.props.commentReducer;
+    comments = comments.filter(comment => !comment.deleted);
     comments.sort(sortBy('-voteScore'));
 
     return (
