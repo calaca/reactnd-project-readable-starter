@@ -27,6 +27,14 @@ export function commentReducer(state = initialState, action) {
         ...state,
         comments
       }
+    case actionTypes.SET_NEW_COMMENT:
+      comments = state.comments;
+      comments.push(action.comment);
+
+     return {
+        ...state,
+        comments
+     }
     default:
       return state;
   }

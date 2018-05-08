@@ -1,9 +1,11 @@
-import { getPostComments, voteComment } from '../utils/PostsAPI';
+import { getPostComments, voteComment, addComment } from '../utils/PostsAPI';
 
 // Action Type Constants
 export const actionTypes = {
   SET_COMMENTS: 'SET_COMMENTS',
-  UPDATE_COMMENT_VOTE_SCORE: 'UPDATE_COMMENT_VOTE_SCORE'
+  UPDATE_COMMENT_VOTE_SCORE: 'UPDATE_COMMENT_VOTE_SCORE',
+  SET_NEW_COMMENT: 'SET_NEW_COMMENT',
+  UNSET_COMMENT: 'UNSET_COMMENT'
 };
 
 // Sync Actions
@@ -22,6 +24,20 @@ export function updateCommentVoteScore(id, voteScore) {
   }
 }
 
+export function setNewComment(comment) {
+  return {
+    type: actionTypes.SET_NEW_COMMENT,
+    comment
+  }
+};
+
+export function unsetComment(comment) {
+  return {
+    type: actionTypes.UNSET_COMMENT,
+    comment
+  }
+};
+
 // Async Actions
 export function loadComments(id) {
   return dispatch => {
@@ -34,5 +50,12 @@ export function submitCommentVoteScore(id, option) {
   return dispatch => {
     voteComment(id, option)
       .then(comment => dispatch(updateCommentVoteScore(comment.id, comment.voteScore)))
+  }
+};
+
+export function addNewComment(comment) {
+  return dispatch => {
+    addComment(comment)
+      .then(newComment => dispatch(setNewComment(newComment)))
   }
 };

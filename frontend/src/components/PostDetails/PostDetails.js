@@ -4,11 +4,18 @@ import { Link } from 'react-router-dom';
 import sortBy from 'sort-by';
 import Comment from '../Comment/Comment';
 import dateFormatter from '../../helpers/dateFormatter';
-import { loadPostData, submitPostVoteScore, removePost } from '../../actions/PostActions';
-import { loadComments } from '../../actions/CommentActions';
+import { loadPostData, submitPostVoteScore, removePost, loadInitialData } from '../../actions/PostActions';
+import { loadComments, addNewComment } from '../../actions/CommentActions';
 import './PostDetails.css';
 
 class PostDetails extends Component {
+  state = {
+    form: {
+      body: '',
+      author: ''
+    }
+  }
+
   componentDidMount() {
     const id = this.props.match.params.post;
     const { dispatch } = this.props;
@@ -23,7 +30,48 @@ class PostDetails extends Component {
     this.props.history.push('/');
   }
 
+  onChangeHandler = (e) => {
+    let input = e.target.name;
+    let value = e.target.value;
+
+    this.setState({
+      form: {
+        ...this.state.form,
+        [input]: value
+      }
+    });
+  }
+
+  resetForm = () => {
+    this.setState({
+      form: {
+        body: '',
+        author: ''
+      }
+    });
+  }
+
+  addComment = (e) => {
+    e.preventDefault();
+    this.resetForm();
+
+    const { dispatch } = this.props;
+    const { form } = this.state;
+    const id = this.props.match.params.post;
+
+    dispatch(addNewComment({
+      id: Date.now().toString(),
+      timestamp: Date.now(),
+      author: form.author,
+      body: form.body,
+      parentId: id
+    }));
+    dispatch(loadPostData(id));
+    dispatch(loadInitialData());
+  }
+
   render() {
+    const { form } = this.state;
     const { dispatch } = this.props;
     const { post } = this.props.postReducer;
     const { comments } = this.props.commentReducer;
@@ -76,10 +124,22 @@ class PostDetails extends Component {
           </article>
         </section>
         <section className="comments-wrapper">
-          <form>
+          <form id="comment-form" onSubmit={(e) => this.addComment(e)}>
             <h4 className="form-title">Add or edit a comment</h4>
-            <input type="text" name="name" placeholder="Your name" />
-            <textarea name="comment" id="comment" placeholder="Type your message here." />
+            <input
+              type="text"
+              name="author"
+              value={form.author}
+              onChange={e => this.onChangeHandler(e)}
+              placeholder="Your name"
+            />
+            <textarea
+              name="body"
+              id="body"
+              value={form.body}
+              onChange={e => this.onChangeHandler(e)}
+              placeholder="Type your message here."
+            />
             <input className="btn-primary" type="submit" value="save" />
           </form>
           <div className="comments-list">
