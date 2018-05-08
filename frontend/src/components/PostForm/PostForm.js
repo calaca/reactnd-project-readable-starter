@@ -66,6 +66,7 @@ class PostForm extends PureComponent {
               value={form.author}
               onChange={e => this.onChangeHandler(e)}
               placeholder="Your name"
+              required
             />
             <input
               type="text"
@@ -73,6 +74,7 @@ class PostForm extends PureComponent {
               value={form.title}
               onChange={e => this.onChangeHandler(e)}
               placeholder="Post title"
+              required
             />
             <textarea
               name="body"
@@ -80,6 +82,7 @@ class PostForm extends PureComponent {
               value={form.body}
               onChange={e => this.onChangeHandler(e)}
               placeholder="Post text/body"
+              required
             />
             <input className="btn-primary" type="submit" value="save" />
           </form>

@@ -11,7 +11,7 @@ class Comment extends Component {
   }
 
   render() {
-    const { comment, dispatch } = this.props;
+    const { comment, dispatch, loadCommentData } = this.props;
 
     return (
       <article className="comment">
@@ -37,7 +37,12 @@ class Comment extends Component {
             {comment.body}
           </p>
           <div className="info-actions">
-            <button className="edit">edit</button>
+            <button
+              className="edit"
+              onClick={() => loadCommentData(comment.body, comment.author)}
+            >
+              edit
+            </button>
             <button
               className="delete"
               onClick={this.onDeleteHandler}

@@ -99,6 +99,14 @@ section .order-by select:focus > option:checked,
   background-color: #27ae60;
 }
 
+.btn-primary.gray {
+  background-color: #8f8e8e;
+}
+
+.btn-primary.gray:hover {
+  background-color: #666;
+}
+
 form input,
 form textarea {
   display: block;

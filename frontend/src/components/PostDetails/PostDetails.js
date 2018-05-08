@@ -68,6 +68,15 @@ class PostDetails extends Component {
     }, id));
   }
 
+  loadCommentData = (body, author) => {
+    this.setState({
+      form: {
+        body,
+        author
+      }
+    });
+  }
+
   render() {
     const { form } = this.state;
     const { dispatch } = this.props;
@@ -131,6 +140,7 @@ class PostDetails extends Component {
               value={form.author}
               onChange={e => this.onChangeHandler(e)}
               placeholder="Your name"
+              required
             />
             <textarea
               name="body"
@@ -138,13 +148,15 @@ class PostDetails extends Component {
               value={form.body}
               onChange={e => this.onChangeHandler(e)}
               placeholder="Type your message here."
+              required
             />
             <input className="btn-primary" type="submit" value="save" />
+            <button className="btn-primary gray" onClick={() => this.resetForm()}>Clean Form</button>
           </form>
           <div className="comments-list">
             <h3 className="section-subtitle">Comments <span>({post.commentCount})</span></h3>
             {
-              comments.length !== 0 ? comments.map(comment => <Comment key={comment.id} comment={comment} post={post.id} />) : <p className="no-comments">There are no comments yet.</p>
+              comments.length !== 0 ? comments.map(comment => <Comment key={comment.id} comment={comment} post={post.id} loadCommentData={this.loadCommentData} />) : <p className="no-comments">There are no comments yet.</p>
             }
           </div>
         </section>
