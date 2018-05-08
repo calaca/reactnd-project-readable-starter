@@ -42,6 +42,21 @@ export function commentReducer(state = initialState, action) {
         ...state,
         comments
       }
+    case actionTypes.ALTER_COMMENT:
+      comments = state.comments;
+      comments = comments.map(comment => {
+        if (comment.id === action.comment.id) {
+          return {
+            ...action.comment
+          }
+        }
+        return comment;
+      });
+
+      return {
+        ...state,
+        comments
+      }
     default:
       return state;
   }
