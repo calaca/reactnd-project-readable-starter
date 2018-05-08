@@ -64,15 +64,14 @@ export function postReducer(state = initialState, action) {
       }
     case actionTypes.UNSET_POST:
       posts = state.posts;
-      posts = posts.filter(comment => post.id !== action.post.id);
-      // posts = posts.map(post => {
-      //   if (post.id === action.post.id) {
-      //     return {
-      //       ...action.post
-      //     }
-      //   }
-      //   return post;
-      // });
+      posts = posts.map(post => {
+        if (post.id === action.post.id) {
+          return {
+            ...action.post
+          }
+        }
+        return post;
+      });
 
       return {
         ...state,

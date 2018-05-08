@@ -1,4 +1,10 @@
-import { getPostComments, voteComment, addComment, deleteComment } from '../utils/PostsAPI';
+import {
+  getPostComments,
+  voteComment,
+  addComment,
+  deleteComment,
+  editComment
+} from '../utils/PostsAPI';
 import { loadInitialData, loadPostData } from './PostActions';
 
 // Action Type Constants
@@ -6,7 +12,8 @@ export const actionTypes = {
   SET_COMMENTS: 'SET_COMMENTS',
   UPDATE_COMMENT_VOTE_SCORE: 'UPDATE_COMMENT_VOTE_SCORE',
   SET_NEW_COMMENT: 'SET_NEW_COMMENT',
-  UNSET_COMMENT: 'UNSET_COMMENT'
+  UNSET_COMMENT: 'UNSET_COMMENT',
+  ALTER_COMMENT: 'ALTER_COMMENT'
 };
 
 // Sync Actions
@@ -35,6 +42,13 @@ export function setNewComment(comment) {
 export function unsetComment(comment) {
   return {
     type: actionTypes.UNSET_COMMENT,
+    comment
+  }
+};
+
+export function alterComment(comment) {
+  return {
+    type: actionTypes.ALTER_COMMENT,
     comment
   }
 };
@@ -70,6 +84,17 @@ export function removeComment(id, post) {
     deleteComment(id)
       .then(comment => {
         dispatch(unsetComment(comment));
+        dispatch(loadPostData(post));
+        dispatch(loadInitialData());
+      })
+  }
+};
+
+export function updateComment(id, timestamp, body, post) {
+  return dispatch => {
+    editComment(id, timestamp, body)
+      .then(comment => {
+        dispatch(alterComment(comment));
         dispatch(loadPostData(post));
         dispatch(loadInitialData());
       })
