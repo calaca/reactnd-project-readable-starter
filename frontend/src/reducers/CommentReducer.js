@@ -37,15 +37,7 @@ export function commentReducer(state = initialState, action) {
       }
     case actionTypes.UNSET_COMMENT:
       comments = state.comments;
-      comments = comments.map(comment => {
-        if (comment.id === action.comment.id) {
-          return {
-            ...action.comment
-          }
-        }
-        return comment;
-      });
-
+      comments = comments.filter(comment => comment.id !== action.comment.id);
       return {
         ...state,
         comments

@@ -1,4 +1,5 @@
 import { getPostComments, voteComment, addComment, deleteComment } from '../utils/PostsAPI';
+import { loadInitialData, loadPostData } from './PostActions';
 
 // Action Type Constants
 export const actionTypes = {
@@ -53,16 +54,24 @@ export function submitCommentVoteScore(id, option) {
   }
 };
 
-export function addNewComment(comment) {
+export function addNewComment(comment, post) {
   return dispatch => {
     addComment(comment)
-      .then(newComment => dispatch(setNewComment(newComment)))
+      .then(newComment => {
+        dispatch(setNewComment(newComment));
+        dispatch(loadPostData(post));
+        dispatch(loadInitialData());
+      })
   }
 };
 
-export function removeComment(id) {
+export function removeComment(id, post) {
   return dispatch => {
     deleteComment(id)
-      .then(comment => dispatch(unsetComment(comment)))
+      .then(comment => {
+        dispatch(unsetComment(comment));
+        dispatch(loadPostData(post));
+        dispatch(loadInitialData());
+      })
   }
 };

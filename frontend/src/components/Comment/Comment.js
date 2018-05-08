@@ -2,15 +2,12 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import dateFormatter from '../../helpers/dateFormatter';
 import { submitCommentVoteScore, removeComment } from '../../actions/CommentActions';
-import { loadPostData, loadInitialData } from '../../actions/PostActions';
 import './Comment.css';
 
 class Comment extends Component {
   onDeleteHandler = () => {
     const { comment, dispatch, post } = this.props;
-    dispatch(removeComment(comment.id));
-    dispatch(loadPostData(post));
-    dispatch(loadInitialData());
+    dispatch(removeComment(comment.id, post));
   }
 
   render() {
@@ -46,7 +43,7 @@ class Comment extends Component {
               onClick={this.onDeleteHandler}
             >
               delete
-        </button>
+            </button>
           </div>
         </div>
       </article>

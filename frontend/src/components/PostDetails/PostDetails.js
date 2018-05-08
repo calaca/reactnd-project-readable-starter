@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import sortBy from 'sort-by';
 import Comment from '../Comment/Comment';
 import dateFormatter from '../../helpers/dateFormatter';
-import { loadPostData, submitPostVoteScore, removePost, loadInitialData } from '../../actions/PostActions';
+import { loadPostData, submitPostVoteScore, removePost } from '../../actions/PostActions';
 import { loadComments, addNewComment } from '../../actions/CommentActions';
 import './PostDetails.css';
 
@@ -65,9 +65,7 @@ class PostDetails extends Component {
       author: form.author,
       body: form.body,
       parentId: id
-    }));
-    dispatch(loadPostData(id));
-    dispatch(loadInitialData());
+    }, id));
   }
 
   render() {
