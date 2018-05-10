@@ -5,7 +5,7 @@ import sortBy from 'sort-by';
 import Comment from '../Comment/Comment';
 import dateFormatter from '../../helpers/dateFormatter';
 import { loadPostData, submitPostVoteScore, removePost } from '../../actions/PostActions';
-import { loadComments, addNewComment } from '../../actions/CommentActions';
+import { loadComments, addNewComment, updateComment } from '../../actions/CommentActions';
 import './PostDetails.css';
 
 class PostDetails extends Component {
@@ -13,7 +13,9 @@ class PostDetails extends Component {
     form: {
       body: '',
       author: ''
-    }
+    },
+    edit: false,
+    commentId: ''
   }
 
   componentDidMount() {
@@ -47,7 +49,8 @@ class PostDetails extends Component {
       form: {
         body: '',
         author: ''
-      }
+      },
+      edit: false
     });
   }
 
@@ -68,13 +71,27 @@ class PostDetails extends Component {
     }, id));
   }
 
-  loadCommentData = (body, author) => {
+  loadCommentData = (body, author, commentId) => {
     this.setState({
       form: {
         body,
         author
-      }
+      },
+      edit: true,
+      commentId
     });
+  }
+
+
+  editComment = (e) => {
+    e.preventDefault();
+    this.resetForm();
+
+    const { dispatch } = this.props;
+    const { commentId, form } = this.state;
+    const PostId = this.props.match.params.post;
+
+    dispatch(updateComment(commentId, Date.now(), form.body, PostId));
   }
 
   render() {
@@ -132,7 +149,10 @@ class PostDetails extends Component {
           </article>
         </section>
         <section className="comments-wrapper">
-          <form id="comment-form" onSubmit={(e) => this.addComment(e)}>
+          <form
+            id="comment-form"
+            onSubmit={this.state.edit ? (e) => this.editComment(e) : (e) => this.addComment(e)}
+          >
             <h4 className="form-title">Add or edit a comment</h4>
             <input
               type="text"
@@ -141,6 +161,7 @@ class PostDetails extends Component {
               onChange={e => this.onChangeHandler(e)}
               placeholder="Your name"
               required
+              disabled={this.state.edit}
             />
             <textarea
               name="body"

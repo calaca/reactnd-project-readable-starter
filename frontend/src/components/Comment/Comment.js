@@ -39,7 +39,7 @@ class Comment extends Component {
           <div className="info-actions">
             <button
               className="edit"
-              onClick={() => loadCommentData(comment.body, comment.author)}
+              onClick={() => loadCommentData(comment.body, comment.author, comment.id)}
             >
               edit
             </button>
