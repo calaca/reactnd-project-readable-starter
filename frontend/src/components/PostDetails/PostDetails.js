@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import sortBy from 'sort-by';
 import Comment from '../Comment/Comment';
+import NotFound from '../NotFound/NotFound';
 import dateFormatter from '../../helpers/dateFormatter';
 import { loadPostData, submitPostVoteScore, removePost } from '../../actions/PostActions';
 import { loadComments, addNewComment, updateComment } from '../../actions/CommentActions';
@@ -101,6 +102,8 @@ class PostDetails extends Component {
     let { comments } = this.props.commentReducer;
     comments = comments.filter(comment => !comment.deleted);
     comments.sort(sortBy('-voteScore'));
+
+    if (Object.keys(post).length === 0) return <NotFound />;
 
     return (
       <main className="post-details">

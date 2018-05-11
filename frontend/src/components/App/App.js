@@ -5,7 +5,6 @@ import { loadInitialData } from '../../actions/PostActions';
 import Home from '../Home/Home';
 import Footer from '../Footer/Footer';
 import Top from '../Top/Top';
-import NotFound from '../NotFound/NotFound';
 import PostDetails from '../PostDetails/PostDetails';
 import AddPost from '../AddPost/AddPost';
 import EditPost from '../EditPost/EditPost';
@@ -28,7 +27,6 @@ class App extends Component {
           <Route exact path="/:category" render={(props) => (<Home {...props} />)} />
           <Route exact path="/:category/:post" render={(props) => (<PostDetails {...props} />)} />
           <Route exact path="/:category/:post/edit" render={(props) => (<EditPost {...props} />)} />
-          <Route component={NotFound} />
         </Switch>;
 
     return (
