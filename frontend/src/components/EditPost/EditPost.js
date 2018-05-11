@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import { updatePost } from '../../actions/PostActions';
 import { loadPostData } from '../../actions/PostActions';
 import { loadCategories } from '../../actions/CategoryActions';
@@ -65,6 +66,14 @@ const mapStateToProps = ({ postReducer, categoryReducer }) => {
     postReducer,
     categoryReducer
   }
+};
+
+EditPost.propTypes = {
+  categoryReducer: PropTypes.object.isRequired,
+  postReducer: PropTypes.object.isRequired,
+  history: PropTypes.object.isRequired,
+  match: PropTypes.object.isRequired,
+  dispatch: PropTypes.func.isRequired
 };
 
 export default connect(mapStateToProps)(EditPost);

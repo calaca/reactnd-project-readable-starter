@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import { addNewPost } from '../../actions/PostActions';
 import { loadCategories } from '../../actions/CategoryActions';
 import PostForm from '../PostForm/PostForm';
@@ -53,6 +54,12 @@ class AddPost extends Component {
 
 const mapStateToProps = ({ categoryReducer }) => {
   return categoryReducer;
+};
+
+AddPost.propTypes = {
+  categories: PropTypes.array.isRequired,
+  dispatch: PropTypes.func.isRequired,
+  history: PropTypes.object.isRequired
 };
 
 export default connect(mapStateToProps)(AddPost);

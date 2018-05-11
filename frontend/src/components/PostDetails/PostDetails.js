@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import sortBy from 'sort-by';
 import marked from 'marked';
 import Comment from '../Comment/Comment';
@@ -199,6 +200,14 @@ const mapStateToProps = ({ postReducer, commentReducer }) => {
     postReducer,
     commentReducer
   };
-}
+};
+
+PostDetails.propTypes = {
+  postReducer: PropTypes.object.isRequired,
+  commentReducer: PropTypes.object.isRequired,
+  history: PropTypes.object.isRequired,
+  match: PropTypes.object.isRequired,
+  dispatch: PropTypes.func.isRequired
+};
 
 export default connect(mapStateToProps)(PostDetails);

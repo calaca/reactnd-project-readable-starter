@@ -1,4 +1,5 @@
 import React, { PureComponent } from 'react';
+import PropTypes from 'prop-types';
 import './PostForm.css';
 
 class PostForm extends PureComponent {
@@ -96,5 +97,12 @@ class PostForm extends PureComponent {
     )
   }
 }
+
+PostForm.propTypes = {
+  title: PropTypes.string.isRequired,
+  categories: PropTypes.array.isRequired,
+  message: PropTypes.string.isRequired,
+  onSubmitHandler: PropTypes.func.isRequired
+};
 
 export default PostForm;

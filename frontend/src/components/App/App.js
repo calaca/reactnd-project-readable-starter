@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import { Switch, Route, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
+import { Switch, Route, withRouter } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import { loadInitialData } from '../../actions/PostActions';
 import Home from '../Home/Home';
 import Footer from '../Footer/Footer';
@@ -41,7 +42,15 @@ class App extends Component {
 
 const mapStateToProps = ({ postReducer }) => {
   return postReducer;
-}
+};
+
+App.propTypes = {
+  loading: PropTypes.bool.isRequired,
+  posts: PropTypes.array.isRequired,
+  post: PropTypes.object.isRequired,
+  orderByTarget: PropTypes.string.isRequired,
+  dispatch: PropTypes.func.isRequired
+};
 
 // https://github.com/ReactTraining/react-router/blob/master/packages/react-router/docs/guides/redux.md
 export default withRouter(connect(mapStateToProps)(App));

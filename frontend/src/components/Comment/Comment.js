@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import marked from 'marked';
 import dateFormatter from '../../helpers/dateFormatter';
 import { submitCommentVoteScore, removeComment } from '../../actions/CommentActions';
@@ -58,5 +59,12 @@ class Comment extends Component {
     )
   }
 }
+
+Comment.propTypes = {
+  comment: PropTypes.object.isRequired,
+  post: PropTypes.string.isRequired,
+  loadCommentData: PropTypes.func.isRequired,
+  dispatch: PropTypes.func.isRequired
+};
 
 export default connect()(Comment);

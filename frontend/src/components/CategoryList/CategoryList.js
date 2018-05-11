@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import { loadInitialDataByCategory, loadInitialData } from '../../actions/PostActions';
 import { loadCategories } from '../../actions/CategoryActions';
 import { Link } from 'react-router-dom';
@@ -49,6 +50,11 @@ class CategoryList extends Component {
 
 const mapStateToProps = ({ categoryReducer }) => {
   return categoryReducer;
+};
+
+CategoryList.propTypes = {
+  categories: PropTypes.array.isRequired,
+  dispatch: PropTypes.func.isRequired
 };
 
 export default connect(mapStateToProps)(CategoryList);

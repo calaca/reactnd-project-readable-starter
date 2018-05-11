@@ -1,6 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import Post from '../Post/Post';
 import CategoryList from '../CategoryList/CategoryList';
 import { changeOrderByTarget } from '../../actions/PostActions';
@@ -50,6 +51,12 @@ class Home extends Component {
 
 const mapStateToProps = ({ postReducer }) => {
   return postReducer;
-}
+};
+
+Home.propTypes = {
+  posts: PropTypes.array.isRequired,
+  orderByTarget: PropTypes.string.isRequired,
+  dispatch: PropTypes.func.isRequired
+};
 
 export default connect(mapStateToProps)(Home);

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import { submitPostVoteScore, removePost } from '../../actions/PostActions';
 import dateFormatter from '../../helpers/dateFormatter';
 import './Post.css';
@@ -55,6 +56,11 @@ class Post extends Component {
       </article>
     )
   }
+};
+
+Post.propTypes = {
+  post: PropTypes.object.isRequired,
+  dispatch: PropTypes.func.isRequired
 };
 
 export default connect()(Post);
