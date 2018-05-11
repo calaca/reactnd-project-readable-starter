@@ -132,6 +132,26 @@ form textarea {
   resize: none;
 }
 
+span.info {
+  display: inline-flex;
+  margin-bottom: 20px;
+  font-size: 14px;
+  background-color: #e1e1e1;
+  color: #666;
+  padding: 0.5em;
+}
+
+span.info a {
+  margin-right: 5px;
+  text-decoration: none;
+  color: #3498db;
+  transition: all 0.4s ease-in-out;
+}
+
+span.info a:hover {
+  color: #2980b9;
+}
+
 @media (max-width: 769px) {
   main {
     width: 100%;

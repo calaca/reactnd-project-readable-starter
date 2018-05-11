@@ -43,6 +43,11 @@ class PostForm extends PureComponent {
       <main className="new-edit-post">
         <section className="form-wrapper">
           <h2 className="section-title">{title}</h2>
+          <div className="info-wrapper">
+            <span className="info">
+              <a href="https://guides.github.com/features/mastering-markdown/">Markdown</a>supported in post body.
+            </span>
+          </div>
           {
             message && <p className="message">{message}</p>
           }

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import marked from 'marked';
 import dateFormatter from '../../helpers/dateFormatter';
 import { submitCommentVoteScore, removeComment } from '../../actions/CommentActions';
 import './Comment.css';
@@ -33,8 +34,10 @@ class Comment extends Component {
             <h3 className="author-name">{comment.author}</h3>
             <span className="date">{`${dateFormatter(comment.timestamp)} ago`}</span>
           </div>
-          <p className="body">
-            {comment.body}
+          <p
+            className="body"
+            dangerouslySetInnerHTML={{ __html: marked(comment.body) }}
+          >
           </p>
           <div className="info-actions">
             <button

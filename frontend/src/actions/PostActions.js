@@ -113,7 +113,10 @@ export function loadPostData(id) {
 export function addNewPost(post) {
   return dispatch => {
     addPost(post)
-      .then(newPost => dispatch(setNewPost(newPost)))
+      .then(newPost => {
+        dispatch(setNewPost(newPost));
+        dispatch(loadInitialData());
+      })
   }
 };
 

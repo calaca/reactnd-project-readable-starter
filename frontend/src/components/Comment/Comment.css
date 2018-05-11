@@ -65,6 +65,16 @@
   margin: 0;
 }
 
+.comments-list .comment .content p a {
+  text-decoration: none;
+  color: #3498db;
+  transition: all 0.4s ease-in-out;
+}
+
+.comments-list .comment .content p a:hover {
+  color: #2980b9;
+}
+
 .comments-list .comment .content .details {
   padding-right: 0.5em;
   margin-right: 0.5em;

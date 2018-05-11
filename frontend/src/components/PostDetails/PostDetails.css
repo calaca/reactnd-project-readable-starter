@@ -33,6 +33,16 @@
   font-weight: 200;
 }
 
+.post-details .posts-wrapper .post .body p a {
+  text-decoration: none;
+  color: #3498db;
+  transition: all 0.4s ease-in-out;
+}
+
+.post-details .posts-wrapper .post .body p a:hover {
+  color: #2980b9;
+}
+
 .post-details .comments-wrapper form .form-title {
   color: #621483;
   font-size: 16px;

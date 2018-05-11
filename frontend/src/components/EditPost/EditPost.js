@@ -27,6 +27,8 @@ class EditPost extends Component {
     this.setState({
       message: 'Post edited successfully.'
     });
+
+    this.props.history.goBack();
   }
 
   onChangeHandler = (e) => {

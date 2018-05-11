@@ -32,6 +32,8 @@ class AddPost extends Component {
     this.setState({
       message: 'New post added successfully.'
     });
+
+    this.props.history.goBack();
   }
 
   render() {

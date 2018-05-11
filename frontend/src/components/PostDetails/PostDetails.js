@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import sortBy from 'sort-by';
+import marked from 'marked';
 import Comment from '../Comment/Comment';
 import NotFound from '../NotFound/NotFound';
 import dateFormatter from '../../helpers/dateFormatter';
@@ -145,8 +146,9 @@ class PostDetails extends Component {
               </div>
             </div>
             <div className="body">
-              <p>
-                {post.body}
+              <p
+                dangerouslySetInnerHTML={{ __html: marked(post.body) }}
+              >
               </p>
             </div>
           </article>
@@ -157,6 +159,9 @@ class PostDetails extends Component {
             onSubmit={this.state.edit ? (e) => this.editComment(e) : (e) => this.addComment(e)}
           >
             <h4 className="form-title">Add or edit a comment</h4>
+            <span className="info">
+              <a href="https://guides.github.com/features/mastering-markdown/">Markdown</a>supported in comment body.
+            </span>
             <input
               type="text"
               name="author"
