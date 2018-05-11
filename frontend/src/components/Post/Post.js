@@ -7,6 +7,10 @@ import dateFormatter from '../../helpers/dateFormatter';
 import './Post.css';
 
 class Post extends Component {
+  /**
+  * @description Deletes clicked post
+  * @param {string} id - The id of the post to be deleted
+  */
   deletePost = (id) => {
     const { dispatch } = this.props;
     dispatch(removePost(id));

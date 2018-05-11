@@ -13,6 +13,9 @@ import Loading from '../Loading/Loading';
 import './App.css';
 
 class App extends Component {
+  /**
+  * @description Loads initial data
+  */
   componentDidMount() {
     const { dispatch } = this.props;
     dispatch(loadInitialData());

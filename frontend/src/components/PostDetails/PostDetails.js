@@ -21,6 +21,9 @@ class PostDetails extends Component {
     commentId: ''
   }
 
+  /**
+  * @description Loads current post data and comments
+  */
   componentDidMount() {
     const id = this.props.match.params.post;
     const { dispatch } = this.props;
@@ -28,6 +31,10 @@ class PostDetails extends Component {
     dispatch(loadComments(id));
   }
 
+  /**
+  * @description Deletes current post
+  * @param {string} id - The current post id
+  */
   deletePost = (id) => {
     const { dispatch } = this.props;
     dispatch(removePost(id));
@@ -35,6 +42,10 @@ class PostDetails extends Component {
     this.props.history.push('/');
   }
 
+  /**
+  * @description Updates the state based on form input fields
+  * @param {Event} e - The onChange event
+  */
   onChangeHandler = (e) => {
     let input = e.target.name;
     let value = e.target.value;
@@ -47,6 +58,9 @@ class PostDetails extends Component {
     });
   }
 
+  /**
+  * @description Clears the comment form
+  */
   resetForm = () => {
     this.setState({
       form: {
@@ -57,6 +71,10 @@ class PostDetails extends Component {
     });
   }
 
+  /**
+  * @description Adds a new comment
+  * @param {Event} event - The onSubmit event
+  */
   addComment = (e) => {
     e.preventDefault();
     this.resetForm();
@@ -74,6 +92,12 @@ class PostDetails extends Component {
     }, id));
   }
 
+  /**
+  * @description Loads comment data to form
+  * @param {string} body - The current comment body
+  * @param {string} author - The current comment author
+  * @param {string} commentId - The current comment id
+  */
   loadCommentData = (body, author, commentId) => {
     this.setState({
       form: {
@@ -86,6 +110,10 @@ class PostDetails extends Component {
   }
 
 
+  /**
+  * @description Edits a comment
+  * @param {Event} event - The onSubmit event
+  */
   editComment = (e) => {
     e.preventDefault();
     this.resetForm();

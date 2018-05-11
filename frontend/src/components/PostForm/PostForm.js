@@ -12,6 +12,10 @@ class PostForm extends PureComponent {
     }
   }
 
+  /**
+  * @description Updates the state based on form input fields
+  * @param {Event} event - The onChange event
+  */
   onChangeHandler = (e) => {
     let input = e.target.name;
     let value = e.target.value;
@@ -24,6 +28,10 @@ class PostForm extends PureComponent {
     });
   }
 
+  /**
+  * @description Loads post data to state
+  * @param {object} nextProps - The next props this component will receive
+  */
   componentWillReceiveProps(nextProps) {
     const post = nextProps.post;
 

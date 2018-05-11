@@ -11,12 +11,20 @@ class EditPost extends Component {
     message: ''
   }
 
+  /**
+  * @description Loads all categories and current post data
+  */
   componentDidMount() {
     const { dispatch } = this.props;
     dispatch(loadCategories());
     dispatch(loadPostData(this.props.match.params.post));
   }
 
+  /**
+  * @description Edits the current post
+  * @param {Event} e - The onSubmit event
+  * @param {object} form - The form containing the current post information
+  */
   editPost = (e, form) => {
     e.preventDefault();
     e.target.reset();
@@ -32,6 +40,10 @@ class EditPost extends Component {
     this.props.history.goBack();
   }
 
+  /**
+  * @description Updates state if a form input field has been changed
+  * @param {Event} e - The onChange event
+  */
   onChangeHandler = (e) => {
     let input = e.target.name;
     let value = e.target.value;

@@ -7,6 +7,9 @@ import { submitCommentVoteScore, removeComment } from '../../actions/CommentActi
 import './Comment.css';
 
 class Comment extends Component {
+  /**
+  * @description Deletes a comment
+  */
   onDeleteHandler = () => {
     const { comment, dispatch, post } = this.props;
     dispatch(removeComment(comment.id, post));

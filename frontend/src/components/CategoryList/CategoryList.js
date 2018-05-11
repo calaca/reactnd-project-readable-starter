@@ -7,11 +7,18 @@ import { Link } from 'react-router-dom';
 import './CategoryList.css';
 
 class CategoryList extends Component {
+  /**
+  * @description Loads all categories
+  */
   componentDidMount() {
     const { dispatch } = this.props;
     dispatch(loadCategories());
   }
 
+  /**
+  * @description Filters posts based on clicked category
+  * @param {object} category - The clicked category
+  */
   onClick = (category) => {
     const { dispatch } = this.props;
 

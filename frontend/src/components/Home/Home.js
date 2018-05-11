@@ -9,6 +9,10 @@ import sortBy from 'sort-by';
 import './Home.css';
 
 class Home extends Component {
+  /**
+  * @description Sort all posts based on most voted or most recent
+  * @param {array} posts - The array os post objects
+  */
   sortPosts = (posts) => {
     const { orderByTarget } = this.props;
     return posts.sort(sortBy(`-${orderByTarget}`))

@@ -10,11 +10,19 @@ class AddPost extends Component {
     message: ''
   }
 
+  /**
+  * @description Loads all categories
+  */
   componentDidMount() {
     const { dispatch } = this.props;
     dispatch(loadCategories());
   }
 
+  /**
+  * @description Adds a new post
+  * @param {Event} e - The onSubmit event
+  * @param {object} form - The form that contains new post information
+  */
   newPost = (e, form) => {
     e.preventDefault();
     e.target.reset();
