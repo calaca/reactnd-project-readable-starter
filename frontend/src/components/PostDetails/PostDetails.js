@@ -133,7 +133,7 @@ class PostDetails extends Component {
     comments = comments.filter(comment => !comment.deleted);
     comments.sort(sortBy('-voteScore'));
 
-    if (Object.keys(post).length === 0) return <NotFound />;
+    if (Object.keys(post).length === 0 || post.error) return <NotFound />;
 
     return (
       <main className="post-details">
@@ -161,7 +161,7 @@ class PostDetails extends Component {
               <div className="comments">
                 <p>
                   <span className="count">{post.commentCount}</span> comments
-            </p>
+                </p>
               </div>
               <div className="info-actions">
                 <span className="category">{post.category}</span>
@@ -175,10 +175,7 @@ class PostDetails extends Component {
               </div>
             </div>
             <div className="body">
-              <p
-                dangerouslySetInnerHTML={{ __html: marked(post.body) }}
-              >
-              </p>
+              <p dangerouslySetInnerHTML={{ __html: marked(post.body) }} ></p>
             </div>
           </article>
         </section>
