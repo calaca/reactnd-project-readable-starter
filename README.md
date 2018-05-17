@@ -47,7 +47,7 @@ To run these, make sure you are at the `frontend` folder.
 
 ### Production
 
-Click [here](soon) for the live version of this app.
+Click [here](https://readable-react-redux.herokuapp.com/) for the live version of this app.
 
 ## Running the tests
 
