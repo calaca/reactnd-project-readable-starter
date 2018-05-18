@@ -47,11 +47,11 @@ To run these, make sure you are at the `frontend` folder.
 
 ### Production
 
-Click [here](https://readable-react-redux.herokuapp.com/) for the live version of this app.
+Click [here](http://35.227.181.248/) for the live version of this app. Please note that the service worker won't work because this is not a secure origin.
 
 ## Running the tests
 
-Explain how to run the automated tests for this system.
+Tests will be coming soon.
 
 ## Deployment
 
@@ -60,7 +60,7 @@ This is how to deploy using Google Cloud:
 2. Configure the firewall to enable port `3001`
 3. In this instance, repeat what's done in [Installing](#installing)
 4. Install forever with `sudo npm install forever`
-5. Go to `./api-server` and run `forever server.js` so the back-end keeps running ~~forever~~
+5. Go to `./api-server` and run `forever start server.js` so the back-end keeps running ~~forever~~
 6. Remove Apache's `index.html` with `cd /var/www/html/` then `rm index.html`
 7. Go to `./frontend/build` and move its contents to Apache with `sudo cp -r * /var/www/html/`
 8. Open your instance's external IP in a browser and that's it!
