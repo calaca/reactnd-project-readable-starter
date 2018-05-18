@@ -1,4 +1,6 @@
-const api = 'http://localhost:3001';
+const api = process.env.ENV === 'production' ?
+'http://http://35.227.181.248/:3001' :
+'http://localhost:3001';
 
 let token = localStorage.token;
 

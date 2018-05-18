@@ -61,6 +61,9 @@ This is how to deploy using Google Cloud:
 3. In this instance, repeat what's done in [Installing](#installing)
 4. Install forever with `sudo npm install forever`
 5. Go to `./api-server` and run `forever server.js` so the back-end keeps running ~~forever~~
+6. Remove Apache's `index.html` with `cd /var/www/html/` then `rm index.html`
+7. Go to `./frontend/build` and move its contents to Apache with `sudo cp -r * /var/www/html/`
+8. Open your instance's external IP in a browser and that's it!
 
 ## Built With
 
