@@ -55,7 +55,12 @@ Explain how to run the automated tests for this system.
 
 ## Deployment
 
-Add additional notes about how to deploy this on a live system.
+This is how to deploy using Google Cloud:
+1. Create a Compute Engine and an instance of it
+2. Configure the firewall to enable port `3001`
+3. In this instance, repeat what's done in [Installing](#installing)
+4. Install forever with `sudo npm install forever`
+5. Go to `./api-server` and run `forever server.js` so the back-end keeps running ~~forever~~
 
 ## Built With
 
