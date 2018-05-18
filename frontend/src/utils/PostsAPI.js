@@ -1,4 +1,4 @@
-const api = process.env.ENV === 'production' ?
+const api = process.env.NODE_ENV === 'production' ?
 'http://http://35.227.181.248/:3001' :
 'http://localhost:3001';
 
