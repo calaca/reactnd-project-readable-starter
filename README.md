@@ -65,7 +65,7 @@ This is how to deploy using Google Cloud:
 7. Go to `./frontend/build` and move its contents to Apache with `sudo cp -r * /var/www/html/`
 8. Open your instance's external IP in a browser and that's it!
 
-To rebuild: `npm i && npm run build && cd build && sudo cp -r * /var/www/html/ && sudo service apache2 reload`
+To rebuild (at `./frontend`): `npm i && npm run build && cd build && sudo cp -r * /var/www/html/ && sudo service apache2 reload`
 
 ## Built With
 
