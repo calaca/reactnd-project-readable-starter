@@ -49,6 +49,8 @@ To run these, make sure you are at the `frontend` folder.
 
 Click [here](http://35.227.181.248/) for the live version of this app. Please note that the service worker won't work because this is not a secure origin.
 
+:exclamation: This is a bit buggy! Apache doesn't seem to work well with React Router.
+
 ## Running the tests
 
 Tests will be coming soon.
