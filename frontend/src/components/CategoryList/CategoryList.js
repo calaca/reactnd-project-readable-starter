@@ -1,32 +1,17 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { loadInitialDataByCategory, loadInitialData } from '../../actions/PostActions';
-import { loadCategories } from '../../actions/CategoryActions';
+import { loadInitialDataByCategory } from '../../actions/PostActions';
 import { Link } from 'react-router-dom';
 import './CategoryList.css';
 
 class CategoryList extends Component {
-  /**
-  * @description Loads all categories
-  */
-  componentDidMount() {
-    const { dispatch } = this.props;
-    dispatch(loadCategories());
-  }
-
   /**
   * @description Filters posts based on clicked category
   * @param {object} category - The clicked category
   */
   onClick = (category) => {
     const { dispatch } = this.props;
-
-    if (category === 'all') {
-      dispatch(loadInitialData());
-      return;
-    }
-
     dispatch(loadInitialDataByCategory(category));
   }
 
@@ -38,9 +23,8 @@ class CategoryList extends Component {
         <h2 className="section-title">Categories</h2>
         <ul>
           <li key='all'>
-            <Link to={`/`} onClick={() => this.onClick('all')}>
-              All</Link>
-            </li>
+            <Link to={`/`}>All</Link>
+          </li>
           {
             categories.map(category => 
               <li key={category.name}>

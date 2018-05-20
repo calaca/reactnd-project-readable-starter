@@ -5,18 +5,18 @@ import PropTypes from 'prop-types';
 import PostList from '../PostList/PostList';
 import CategoryList from '../CategoryList/CategoryList';
 import { sortPosts } from '../../helpers/sortPosts';
-import { loadInitialData } from '../../actions/PostActions';
+// import { loadInitialData } from '../../actions/PostActions';
 import { changeOrderByTarget } from '../../actions/AppActions';
 import Loading from '../Loading/Loading';
-import './Home.css';
 
-class Home extends Component {
+class Category extends Component {
   /**
   * @description Loads initial data
   */
   componentDidMount() {
     const { dispatch } = this.props;
-    dispatch(loadInitialData());
+    // TODO: load only posts from a specific category here
+    // dispatch(loadInitialData());
   }
 
   render() {
@@ -27,7 +27,7 @@ class Home extends Component {
       loading ? <Loading loading={loading} />
         : (
           <Fragment>
-            <main className="main-content home">
+            <main className="main-content category">
               <section className="posts">
                 <h2 className="section-title">Posts</h2>
                 <div className="actions">
@@ -49,7 +49,7 @@ class Home extends Component {
 
     return (
       <Fragment>
-        { content }
+        {content}
       </Fragment>
     )
   }
@@ -68,10 +68,10 @@ const mapStateToProps = ({ postReducer, appReducer }) => {
   };
 };
 
-Home.propTypes = {
+Category.propTypes = {
   posts: PropTypes.array.isRequired,
   orderByTarget: PropTypes.string.isRequired,
   dispatch: PropTypes.func.isRequired
 };
 
-export default connect(mapStateToProps)(Home);
+export default connect(mapStateToProps)(Category);

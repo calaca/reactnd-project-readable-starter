@@ -13,14 +13,13 @@ export const actionTypes = {
   SET_INITIAL_DATA: 'SET_INITIAL_DATA',
   SET_LOADING: 'SET_LOADING',
   UPDATE_POST_VOTE_SCORE: 'UPDATE_POST_VOTE_SCORE',
-  CHANGE_ODER_BY_TARGET: 'CHANGE_ODER_BY_TARGET',
   SET_POST_DATA: 'SET_POST_DATA',
   SET_NEW_POST: 'SET_NEW_POST',
   UNSET_POST: 'UNSET_POST',
   ALTER_POST: 'ALTER_POST'
 };
 
-// Sync Actions
+// Action Creators
 export function setPosts(posts) {
   return {
     type: actionTypes.SET_INITIAL_DATA,
@@ -40,13 +39,6 @@ export function updatePostVoteScore(id, voteScore) {
     type: actionTypes.UPDATE_POST_VOTE_SCORE,
     id,
     voteScore
-  }
-};
-
-export function changeOrderByTarget(target) {
-  return {
-    type: actionTypes.CHANGE_ODER_BY_TARGET,
-    target
   }
 };
 
@@ -78,7 +70,7 @@ export function alterPost(post) {
   }
 };
 
-// Async Actions
+// Thunks
 export function loadInitialData() {
   return dispatch => {
     getPosts()

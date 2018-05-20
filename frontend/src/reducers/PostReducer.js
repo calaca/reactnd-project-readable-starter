@@ -44,11 +44,6 @@ export function postReducer(state = initialState, action) {
         posts,
         post
       }
-    case actionTypes.CHANGE_ODER_BY_TARGET:
-      return {
-        ...state,
-        orderByTarget: action.target
-      }
     case actionTypes.SET_POST_DATA:
       return {
         ...state,

@@ -16,7 +16,7 @@ export const actionTypes = {
   ALTER_COMMENT: 'ALTER_COMMENT'
 };
 
-// Sync Actions
+// Action Creators
 export function setComments(comments) {
   return {
     type: actionTypes.SET_COMMENTS,
@@ -53,7 +53,7 @@ export function alterComment(comment) {
   }
 };
 
-// Async Actions
+// Thunks
 export function loadComments(id) {
   return dispatch => {
     getPostComments(id)
