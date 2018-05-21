@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "cd api-server && npm install && node server.js",
-    "heroku-postbuild": "cd frontend && npm install && npm run build"
+    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false && cd frontend && npm install && npm run build"
   },
   "keywords": [
     "react",
@@ -15,6 +15,7 @@
   "author": "Lorena Calaça",
   "license": "MIT",
   "engines": {
-    "node": "10.0.0"
+    "node": "10.0.0",
+    "npm": "6.0.1"
   }
 }
