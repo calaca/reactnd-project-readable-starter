@@ -4,7 +4,8 @@
   "description": "Reddit-like web app built with React and Redux.",
   "main": "index.js",
   "scripts": {
-    "start": "cd frontend && npm install && npm run build && cd ../api-server && npm install && node server.js"
+    "start": "cd api-server && npm install && node server.js",
+    "postinstall": "cd frontend && npm install && npm run build"
   },
   "keywords": [
     "react",
