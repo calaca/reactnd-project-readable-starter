@@ -1,0 +1,20 @@
+{
+  "name": "reactnd-readable",
+  "version": "1.0.0",
+  "description": "Reddit-like web app built with React and Redux.",
+  "main": "index.js",
+  "scripts": {
+    "start": "cd api-server && npm install && node server.js",
+    "heroku-postbuild": "cd frontend && npm install && npm run build"
+  },
+  "keywords": [
+    "react",
+    "redux",
+    "heroku"
+  ],
+  "author": "Lorena Calaça",
+  "license": "MIT",
+  "engines": {
+    "node": "10.0.0"
+  }
+}

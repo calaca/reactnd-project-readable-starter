@@ -1,5 +1,5 @@
 const api = process.env.NODE_ENV === 'production' ?
-'http://35.227.181.248:3001' :
+window.origin :
 'http://localhost:3001';
 
 let token = localStorage.token;

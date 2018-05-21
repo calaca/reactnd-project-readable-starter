@@ -3,6 +3,7 @@ require('dotenv').config()
 const express = require('express')
 const bodyParser = require('body-parser')
 const cors = require('cors')
+const path = require('path')
 const config = require('./config')
 const categories = require('./categories')
 const posts = require('./posts')
@@ -10,11 +11,10 @@ const comments = require('./comments')
 
 const app = express()
 
-app.use(express.static('public'))
+app.use(express.static('../frontend/build'))
 app.use(cors())
 
-
-app.get('/', (req, res) => {
+app.get('/docs', (req, res) => {
   const help = `
   <pre>
     Welcome to the Udacity Readable API!
@@ -314,6 +314,12 @@ app.delete('/comments/:id', (req, res) => {
       )
 })
 
+if (process.env.NODE_ENV === 'production') {
+    app.get('*', (req, res) => {
+        res.sendFile(path.resolve(__dirname, 'frontend', 'build', 'index.html'))
+    })
+}
+
 app.listen(config.port, () => {
-  console.log('Server listening on port %s, Ctrl+C to stop', config.port)
+    console.log('Server listening on port %s, Ctrl+C to stop', config.port)
 })
