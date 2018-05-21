@@ -4,8 +4,7 @@
   "description": "Reddit-like web app built with React and Redux.",
   "main": "index.js",
   "scripts": {
-    "start": "cd api-server && npm install && node server.js",
-    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false && cd frontend && npm install && npm run build"
+    "start": "cd api-server && npm install && node server.js"
   },
   "keywords": [
     "react",
