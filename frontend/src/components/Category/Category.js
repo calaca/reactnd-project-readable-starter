@@ -20,6 +20,11 @@ class Category extends Component {
     dispatch(loadInitialDataByCategory(category));
   }
 
+
+  /**
+  * @description Loads initial data by category
+  * @param {object} prevProps - The previous props
+  */
   componentDidUpdate(prevProps) {
     const { category } = this.props.match.params;
 
@@ -30,20 +35,11 @@ class Category extends Component {
   }
 
   render() {
-    const { dispatch, orderByTarget, loading, categories } = this.props;
-    const { category } = this.props.match.params;
-    let { posts } = this.props;
-    let exists = false;
+    const { dispatch, orderByTarget, loading, posts, categories, match } = this.props;
 
-    // Checks if the category in the URL exists in the category list
-    categories.forEach(c => {
-      if (c.name === category) {
-        exists = true;
-      }
-    });
-
-    // Returns the NotFound component if the category doesn't match
-    if (!exists) return <NotFound />;
+    if (!categories.includes(match.params.category)) {
+      return <NotFound />;
+    }
 
     let content =
       loading ? <Loading loading={loading} />
@@ -78,16 +74,11 @@ class Category extends Component {
 }
 
 const mapStateToProps = ({ postReducer, appReducer, categoryReducer }) => {
-  let posts = postReducer.posts;
-  const orderByTarget = appReducer.orderByTarget;
-  posts = posts.filter(post => !post.deleted);
-  posts = sortPosts(posts, orderByTarget);
-
   return {
-    ...postReducer,
-    posts,
-    ...appReducer,
-    ...categoryReducer
+    loading: postReducer.loading,
+    posts: sortPosts(postReducer.posts, appReducer.orderByTarget),
+    orderByTarget: appReducer.orderByTarget,
+    categories: categoryReducer.categories.map(c => c.path)
   };
 };
 

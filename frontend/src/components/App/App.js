@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { Switch, Route, withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { loadInitialData } from '../../actions/PostActions';
+import { loadCategories } from '../../actions/CategoryActions';
 import Home from '../Home/Home';
 import Category from '../Category/Category';
 import Footer from '../Footer/Footer';
@@ -21,6 +22,7 @@ class App extends Component {
   componentDidMount() {
     const { dispatch } = this.props;
     dispatch(loadInitialData());
+    dispatch(loadCategories());
   }
 
   render() {

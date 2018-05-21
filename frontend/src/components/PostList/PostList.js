@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Post from '../Post/Post';
 
-const CategoryList = ({ posts }) => (
+const PostList = ({ posts }) => (
   <div className="posts-wrapper">
     {
       posts.length !== 0 ? posts.map(post => <Post key={post.id} post={post} />)
@@ -11,8 +11,8 @@ const CategoryList = ({ posts }) => (
   </div>
 );
 
-CategoryList.propTypes = {
+PostList.propTypes = {
   posts: PropTypes.array.isRequired
 };
 
-export default CategoryList;
+export default PostList;

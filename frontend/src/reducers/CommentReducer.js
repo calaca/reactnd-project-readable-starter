@@ -28,7 +28,7 @@ export function commentReducer(state = initialState, action) {
         comments
       }
     case actionTypes.SET_NEW_COMMENT:
-      comments = state.comments;
+      comments = [...state.comments];
       comments.push(action.comment);
 
       return {
@@ -36,14 +36,12 @@ export function commentReducer(state = initialState, action) {
         comments
       }
     case actionTypes.UNSET_COMMENT:
-      comments = state.comments;
-      comments = comments.filter(comment => comment.id !== action.comment.id);
       return {
         ...state,
-        comments
+        comments: state.comments.filter(comment => comment.id !== action.comment.id)
       }
     case actionTypes.ALTER_COMMENT:
-      comments = state.comments;
+      comments = [...state.comments];
       comments = comments.map(comment => {
         if (comment.id === action.comment.id) {
           return {

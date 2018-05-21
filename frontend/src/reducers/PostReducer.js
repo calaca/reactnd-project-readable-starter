@@ -50,7 +50,7 @@ export function postReducer(state = initialState, action) {
         post: action.post
       }
     case actionTypes.SET_NEW_POST:
-      posts = state.posts;
+      posts = [...state.posts];
       posts.push(action.post);
 
       return {
@@ -58,34 +58,14 @@ export function postReducer(state = initialState, action) {
         posts
       }
     case actionTypes.UNSET_POST:
-      posts = state.posts;
-      posts = posts.map(post => {
-        if (post.id === action.post.id) {
-          return {
-            ...action.post
-          }
-        }
-        return post;
-      });
-
       return {
         ...state,
-        posts
+        posts: state.posts.filter(post => post.id !== action.post.id)
       }
     case actionTypes.ALTER_POST:
-      posts = state.posts;
-      posts = posts.map(post => {
-        if (post.id === action.post.id) {
-          return {
-            ...action.post
-          }
-        }
-        return post;
-      });
-
       return {
         ...state,
-        posts
+        posts: state.posts.filter(post => post.id === action.post.id)
       }
     default:
       return state

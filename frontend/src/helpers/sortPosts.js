@@ -6,5 +6,5 @@ import sortBy from 'sort-by';
   * @param {String} orderByTarget - The string containing which type of sort it is (voteScore or date)
   */
 export function sortPosts(posts, orderByTarget) {
-  return posts.sort(sortBy(`-${orderByTarget}`))
-}
+  return posts.slice().sort(sortBy(`-${orderByTarget}`));
+};

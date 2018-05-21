@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { updatePost } from '../../actions/PostActions';
 import { loadPostData } from '../../actions/PostActions';
-import { loadCategories } from '../../actions/CategoryActions';
 import PostForm from '../PostForm/PostForm';
 
 class EditPost extends Component {
@@ -16,7 +15,6 @@ class EditPost extends Component {
   */
   componentDidMount() {
     const { dispatch } = this.props;
-    dispatch(loadCategories());
     dispatch(loadPostData(this.props.match.params.post));
   }
 
