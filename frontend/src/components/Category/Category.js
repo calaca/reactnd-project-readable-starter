@@ -5,23 +5,36 @@ import PropTypes from 'prop-types';
 import PostList from '../PostList/PostList';
 import CategoryList from '../CategoryList/CategoryList';
 import { sortPosts } from '../../helpers/sortPosts';
-// import { loadInitialData } from '../../actions/PostActions';
+import { loadInitialDataByCategory } from '../../actions/PostActions';
 import { changeOrderByTarget } from '../../actions/AppActions';
 import Loading from '../Loading/Loading';
+import NotFound from '../NotFound/NotFound';
 
 class Category extends Component {
   /**
-  * @description Loads initial data
+  * @description Loads initial data by category
   */
   componentDidMount() {
     const { dispatch } = this.props;
-    // TODO: load only posts from a specific category here
-    // dispatch(loadInitialData());
+    const { category } = this.props.match.params;
+    dispatch(loadInitialDataByCategory(category));
   }
 
   render() {
-    const { dispatch, orderByTarget, loading } = this.props;
+    const { dispatch, orderByTarget, loading, categories } = this.props;
+    const { category } = this.props.match.params;
     let { posts } = this.props;
+    let exists = false;
+
+    // Checks if the category in the URL exists in the category list
+    categories.forEach(c => {
+      if (c.name === category) {
+        exists = true;
+      }
+    });
+
+    // Returns the NotFound component if the category doesn't match
+    if (!exists) return <NotFound />;
 
     let content =
       loading ? <Loading loading={loading} />
@@ -55,7 +68,7 @@ class Category extends Component {
   }
 }
 
-const mapStateToProps = ({ postReducer, appReducer }) => {
+const mapStateToProps = ({ postReducer, appReducer, categoryReducer }) => {
   let posts = postReducer.posts;
   const orderByTarget = appReducer.orderByTarget;
   posts = posts.filter(post => !post.deleted);
@@ -64,13 +77,15 @@ const mapStateToProps = ({ postReducer, appReducer }) => {
   return {
     ...postReducer,
     posts,
-    ...appReducer
+    ...appReducer,
+    ...categoryReducer
   };
 };
 
 Category.propTypes = {
   posts: PropTypes.array.isRequired,
   orderByTarget: PropTypes.string.isRequired,
+  categories: PropTypes.array.isRequired,
   dispatch: PropTypes.func.isRequired
 };
 
