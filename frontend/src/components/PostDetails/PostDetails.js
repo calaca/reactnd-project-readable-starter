@@ -109,7 +109,6 @@ class PostDetails extends Component {
     });
   }
 
-
   /**
   * @description Edits a comment
   * @param {Event} event - The onSubmit event
