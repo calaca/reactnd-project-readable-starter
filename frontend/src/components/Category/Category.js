@@ -20,6 +20,15 @@ class Category extends Component {
     dispatch(loadInitialDataByCategory(category));
   }
 
+  componentDidUpdate(prevProps) {
+    const { category } = this.props.match.params;
+
+    if (prevProps.match.params.category !== category) {
+      const { dispatch } = this.props;
+      dispatch(loadInitialDataByCategory(category));
+    }
+  }
+
   render() {
     const { dispatch, orderByTarget, loading, categories } = this.props;
     const { category } = this.props.match.params;

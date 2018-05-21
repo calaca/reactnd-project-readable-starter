@@ -2,20 +2,11 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { addNewPost } from '../../actions/PostActions';
-import { loadCategories } from '../../actions/CategoryActions';
 import PostForm from '../PostForm/PostForm';
 
 class AddPost extends Component {
   state = {
     message: ''
-  }
-
-  /**
-  * @description Loads all categories
-  */
-  componentDidMount() {
-    const { dispatch } = this.props;
-    dispatch(loadCategories());
   }
 
   /**
