@@ -127,9 +127,8 @@ class PostDetails extends Component {
 
   render() {
     const { form } = this.state;
-    const { dispatch } = this.props;
-    const { post } = this.props.postReducer;
-    let { comments } = this.props.commentReducer;
+    const { dispatch, post } = this.props;
+    let { comments } = this.props;
     comments = comments.filter(comment => !comment.deleted);
     comments.sort(sortBy('-voteScore'));
 
@@ -222,14 +221,14 @@ class PostDetails extends Component {
 
 const mapStateToProps = ({ postReducer, commentReducer }) => {
   return {
-    postReducer,
-    commentReducer
+    ...postReducer,
+    ...commentReducer
   };
 };
 
 PostDetails.propTypes = {
-  postReducer: PropTypes.object.isRequired,
-  commentReducer: PropTypes.object.isRequired,
+  post: PropTypes.object.isRequired,
+  comments: PropTypes.array.isRequired,
   history: PropTypes.object.isRequired,
   match: PropTypes.object.isRequired,
   dispatch: PropTypes.func.isRequired

@@ -27,8 +27,7 @@ const mapStateToProps = ({ categoryReducer }) => {
 };
 
 CategoryList.propTypes = {
-  categories: PropTypes.array.isRequired,
-  dispatch: PropTypes.func.isRequired
+  categories: PropTypes.array.isRequired
 };
 
 export default connect(mapStateToProps)(CategoryList);

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Switch, Route, withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
-// import { loadInitialData } from '../../actions/PostActions';
+import { loadInitialData } from '../../actions/PostActions';
 import { loadCategories } from '../../actions/CategoryActions';
 import Home from '../Home/Home';
 import Category from '../Category/Category';
@@ -17,10 +17,11 @@ import './App.css';
 
 class App extends Component {
   /**
-  * @description Loads categories
+  * @description Loads initial data and categories
   */
   componentDidMount() {
     const { dispatch } = this.props;
+    dispatch(loadInitialData());
     dispatch(loadCategories());
   }
 
