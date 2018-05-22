@@ -2,7 +2,7 @@
 
 [![REACT nanodegree](https://img.shields.io/badge/udacity-REACTND-02b3e4.svg?style=flat)](https://br.udacity.com/course/react-nanodegree--nd019)
 
-> Content and comments web app built with React and Redux.
+> Reddit-like web app built with React and Redux.
 
 ## Getting Started
 
@@ -28,7 +28,7 @@ Open a terminal at the project root:
 
 ### NPM scripts
 
-- `npm run start`: runs the app in development mode
+- `npm start`: runs the app in development mode
 - `npm run build`: builds the app for production to the `build` folder
 - `npm run test`: runs the test watcher in an interactive mode
 - `npm run eject`: ejects the app so you have full control over configuration files and the transitive dependencies
@@ -47,9 +47,14 @@ To run these, make sure you are at the `frontend` folder.
 
 ### Production
 
-Click [here](http://35.227.181.248/) for the live version of this app. Please note that the service worker won't work because this is not a secure origin.
+Click [here](https://sheltered-reef-99594.herokuapp.com/) for the live version of this app.
 
-:exclamation: This is a bit buggy! Apache doesn't seem to work well with React Router.
+### Deployment
+
+- `npm start`: starts the server for deployment
+- `npm run postinstall`: builds the app for production/deployment to the `build` folder
+
+To run these, make sure you are at the *root* folder.
 
 ## Running the tests
 
@@ -57,17 +62,26 @@ Tests will be coming soon.
 
 ## Deployment
 
-This is how to deploy using Google Cloud:
-1. Create a Compute Engine and an instance of it
-2. Configure the firewall to enable port `3001`
-3. In this instance, repeat what's done in [Installing](#installing)
-4. Install forever with `sudo npm install forever`
-5. Go to `./api-server` and run `forever start server.js` so the back-end keeps running ~~forever~~
-6. Remove Apache's `index.html` with `cd /var/www/html/` then `rm index.html`
-7. Go to `./frontend/build` and move its contents to Apache with `sudo cp -r * /var/www/html/`
-8. Open your instance's external IP in a browser and that's it!
+This is how to deploy using Heroku:
+1. Install [Heroku CLI](https://devcenter.heroku.com/articles/heroku-cli)
+2. Make changes to the project
+3. Add the changes with `git add .`
+4. Add a commit with `git commit -m 'deploy time!'`
+5. Login to Heroku with `heroku login`
+6. Create a Heroku app with `heroku create`
+7. Push to Heroku with `git push heroku master`
+8. Run `heroku open` to view your project in your default browser
 
-To rebuild (at `./frontend`): `npm i && npm run build && cd build && sudo cp -r * /var/www/html/ && sudo service apache2 reload`
+These are all executed at root folder.
+
+### Server Modifications
+
+Here are the changes I had to make to `api-server/server.js` to make it serve React static files and handle API routes properly:
+
+1. Configure a `package.json` at root folder specifying node and npm versions, plus scripts for start and post install
+2. Change api routes to start with `/api`
+3. Change authorization middleware to only watch routes that start with `/api`
+4. Create a route to serve static files from React build folder only in production mode
 
 ## Built With
 
@@ -75,6 +89,7 @@ To rebuild (at `./frontend`): `npm i && npm run build && cd build && sudo cp -r 
 * [React Router](https://github.com/ReactTraining/react-router) - Declarative routing for React
 * [Redux](https://redux.js.org/) - Redux is a predictable state container for JavaScript apps
 * [react-redux](https://github.com/reactjs/react-redux) - Official React bindings for Redux
+* [Heroku](https://www.heroku.com/) - Platform as a service (PaaS) that enables developers to build, run, and operate applications entirely in the cloud
 
 ## Contributing
 
