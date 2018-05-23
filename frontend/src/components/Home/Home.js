@@ -20,8 +20,7 @@ class Home extends Component {
   }
 
   render() {
-    const { dispatch, orderByTarget, loading } = this.props;
-    let { posts } = this.props;
+    const { dispatch, orderByTarget, loading, posts } = this.props;
 
     let content =
       loading ? <Loading loading={loading} />
@@ -56,15 +55,9 @@ class Home extends Component {
 }
 
 const mapStateToProps = ({ postReducer, appReducer }) => {
-  let posts = postReducer.posts;
-  const orderByTarget = appReducer.orderByTarget;
-  posts = posts.filter(post => !post.deleted);
-  posts = sortPosts(posts, orderByTarget);
-
   return {
-    ...postReducer,
-    posts,
-    ...appReducer
+    posts: sortPosts(postReducer.posts, appReducer.orderByTarget),
+    orderByTarget: appReducer.orderByTarget
   };
 };
 

@@ -126,10 +126,7 @@ class PostDetails extends Component {
 
   render() {
     const { form } = this.state;
-    const { dispatch, post } = this.props;
-    let { comments } = this.props;
-    comments = comments.filter(comment => !comment.deleted);
-    comments.sort(sortBy('-voteScore'));
+    const { dispatch, post, comments } = this.props;
 
     if (Object.keys(post).length === 0 || post.error) return <NotFound />;
 
@@ -220,8 +217,8 @@ class PostDetails extends Component {
 
 const mapStateToProps = ({ postReducer, commentReducer }) => {
   return {
-    ...postReducer,
-    ...commentReducer
+    post: postReducer.post,
+    comments: commentReducer.comments.sort(sortBy('-voteScore'))
   };
 };
 

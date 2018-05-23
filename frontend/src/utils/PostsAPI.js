@@ -2,9 +2,11 @@ const api = process.env.NODE_ENV === 'production' ?
   window.origin :
   'http://localhost:5000';
 
-let token = localStorage.token;
+// let token = localStorage.token;
 
-if (!token) token = localStorage.token = Math.random().toString(36).substr(-8);
+// if (!token) token = localStorage.token = Math.random().toString(36).substr(-8);
+
+const token = 'secret';
 
 const headers = {
   'Accept': 'application/json',
