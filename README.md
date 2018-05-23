@@ -47,7 +47,7 @@ To run these, make sure you are at the `frontend` folder.
 
 ### Production
 
-Click [here](https://sheltered-reef-99594.herokuapp.com/) for the live version of this app.
+Click [here](https://readable-calaca.herokuapp.com/) for the live version of this app.
 
 ### Deployment
 
